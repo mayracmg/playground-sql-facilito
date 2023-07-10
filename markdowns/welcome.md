@@ -16,7 +16,5 @@ This *mandatory* file describes both the table of content and the programming pr
 
 
 ```sql
-var a = 2;
-var b = 4;
-console.log(a+b);
+CREATE DATABASE Autenticacion;
 ```
