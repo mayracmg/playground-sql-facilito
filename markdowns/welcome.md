@@ -3,6 +3,10 @@
 En esta sección encontrarás ejemplos de consultas SQL, clasificas en los 3 tipos que existen, DDL, DCL y DML.
 Los queries estan preparados para funcionar en una base de datos **MySQL**, puedes copiar los queries y ejecutarlos en tu propia base de datos.
 
+Vamos a crear una base de datos llamada Autenticación, la cual tendra el siguiente diagrama ER (Entidad Relacion).
+
+![ER](https://github.com/mayracmg/playground-sql-facilito/blob/ab5d3497a5f500d5654bc6a61c6d5ae3668cc3a7/markdowns/Autenticacion%20ER.png)
+
 ::: DDL (Data Definition Language)
 Creación de una base de datos llamada Autenticación.
 
