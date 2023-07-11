@@ -6,7 +6,13 @@ Please refer to the [documentation](https://tech.io/doc) to learn more about add
 - DCL (Data Control Language)
 - DML (Data Manipulation Language) 
 
-# Ejemplos DDL
+# Sentencias DDL
+
+::: My collapsible section
+
+# Sentencias DDL
+
+:::
 
 Creación de una base de datos llamada Autenticación.
 
