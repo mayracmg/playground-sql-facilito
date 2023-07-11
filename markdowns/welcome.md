@@ -21,10 +21,10 @@ La sentencia **AUTO_INCREMENT** sirve para indicar que el campo ID, será un cor
 
 La sentencia **PRIMARY KEY** sirve para indicar que campo o campos serán utilizados como llave primaria.
 
-El tipo de dato INT permite almacenar números desde -2147483648 hasta 2147483647.
-El tipo de dato VARCHAR permite almacenar una cadena de caracteres de longitud 50 y/o 100 segun se especifique.
-El tipo de dato DATE permiate almacenar fechas (sin hora).
-El tipo de dato TINYINT permite almacenar números desde -128 hasta 127.
++ El tipo de dato INT permite almacenar números desde -2147483648 hasta 2147483647.
++ El tipo de dato VARCHAR permite almacenar una cadena de caracteres de longitud 50 y/o 100 segun se especifique.
++ El tipo de dato DATE permiate almacenar fechas (sin hora).
++ El tipo de dato TINYINT permite almacenar números desde -128 hasta 127.
 
 ```sql
 CREATE TABLE Usuario (
