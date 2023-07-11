@@ -16,15 +16,23 @@ CREATE DATABASE Autenticacion;
 ### Script para creación de las tablas del diagrama ER.
 
 La tabla **Usuario** tendrá como llave primaria el campo ID, los campos ID y Nombre tendran un **constraint** de tipo **NOT NULL** el cual sirve para garantizar que esos campos siempre tendrán valor.
+
 La sentencia **AUTO_INCREMENT** sirve para indicar que el campo ID, será un correlativo automatico, manejado por la base de datos, es decir no es necesario especificar el valor cuando se inserten valores.
+
 La sentencia **PRIMARY KEY** sirve para indicar que campo o campos serán utilizados como llave primaria.
+
+El tipo de dato INT permite almacenar números desde -2147483648 hasta 2147483647.
+El tipo de dato VARCHAR permite almacenar una cadena de caracteres de longitud 50 y/o 100 segun se especifique.
+El tipo de dato DATE permiate almacenar fechas (sin hora).
+El tipo de dato TINYINT permite almacenar números desde -128 hasta 127.
+
 ```sql
 CREATE TABLE Usuario (
 	ID INT NOT NULL AUTO_INCREMENT, 
-	Nombre VARCHAR(100) NOT NULL, 
-	Apellido VARCHAR(100), 
+	Nombre VARCHAR(50) NOT NULL, 
+	Apellido VARCHAR(50), 
 	Email VARCHAR(100), 
-	Fecha_Nacimiento DATETIME,
+	Fecha_Nacimiento DATE,
 	Activo TINYINT,
 	PRIMARY KEY (ID)
 );
