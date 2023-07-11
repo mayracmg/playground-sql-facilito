@@ -1,4 +1,8 @@
 # SQL Facilito
+
+En esta sección encontrarás ejemplos de consultas SQL, clasificas en los 3 tipos que existen, DDL, DCL y DML.
+Los queries estan preparados para funcionar en una base de datos MySQL, puedes copiar los queries y ejecutarlos en tu propia base de datos.
+
 ::: DDL (Data Definition Language)
 Creación de una base de datos llamada Autenticación.
 
