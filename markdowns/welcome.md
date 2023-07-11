@@ -10,6 +10,6 @@ Please refer to the [documentation](https://tech.io/doc) to learn more about add
 
 Creación de una base de datos llamada Autenticación.
 
-```
+```sql
 CREATE DATABASE Autenticacion;
 ```
