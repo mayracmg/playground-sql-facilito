@@ -6,6 +6,7 @@ Los queries estan preparados para funcionar en una base de datos **MySQL**, pued
 Vamos a crear una base de datos llamada Autenticación, la cual tendra el siguiente diagrama ER (Entidad Relacion).
 
 ![ER](https://github.com/mayracmg/playground-sql-facilito/blob/master/markdowns/Autenticacion%20ER.png)
+[[https://github.com/mayracmg/playground-sql-facilito/blob/master/img/Autenticacion%20ER.png|alt=octocat]]
 
 ::: DDL (Data Definition Language)
 Creación de una base de datos llamada Autenticación.
