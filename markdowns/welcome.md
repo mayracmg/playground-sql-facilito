@@ -37,6 +37,22 @@ CREATE TABLE Usuario (
 	PRIMARY KEY (ID)
 );
 ```
+
+Script para la **creación** de un **trigger** el cual va a ejecutar automaticamente justo **antes de insertar** un registro en la **tabla Usuario**, va a verificar si en el registro que se esta insertado, el campo Email esta vacio (NULL) o no, si esta vacio entonces va a asignarle un estado inactivo (Activo = 0).
+```sql
+DELIMITER $$
+
+CREATE TRIGGER BI_Usuario
+    BEFORE INSERT ON Usuario 
+	FOR EACH ROW
+BEGIN
+    IF (NEW.Email IS NULL) THEN
+		SET NEW.Activo = 0;
+	ELSE
+		SET NEW.Activo = 1;
+	END IF;
+END$$
+```
 :::
 
 ::: DCL (Data Control Language)
