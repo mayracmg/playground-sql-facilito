@@ -1,16 +1,25 @@
 # SQL Facilito
-### Tipos de instrucciones de SQL:
-- DDL (Data Definition Language)
-- DCL (Data Control Language)
-- DML (Data Manipulation Language) 
+::: DDL (Data Definition Language)
+Creación de una base de datos llamada Autenticación.
 
-::: Sentencias DDL
+```sql
+CREATE DATABASE Autenticacion;
+```
+:::
+
+::: DCL (Data Control Language)
 
 Creación de una base de datos llamada Autenticación.
 
 ```sql
 CREATE DATABASE Autenticacion;
 ```
+:::
 
+::: DML (Data Manipulation Language) 
+Creación de una base de datos llamada Autenticación.
 
+```sql
+CREATE DATABASE Autenticacion;
+```
 :::
