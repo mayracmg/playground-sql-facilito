@@ -80,10 +80,11 @@ CREATE TABLE Menu (
 ```
 ---
 El script de creación de la tabla **Menu_Usuario** no contiene ningun contraint, ni llave primaria y el tipo de dato DATE "es incorrecto". La tabla será modificada con scripts separados para llegar a la estructura correcta.
-+La sentencia **ALTER TABLE** permite modificar la estructura de la tabla Menu_Usuario.
-+**MODIFY** permite modificar el tipo de dato del campo Fecha_Habilitado.
-+**ADD CONSTRAINT** permite agregar la llave primaria a la tabla, entre los parentesis se agregan los 2 campos ID_Usuario y ID_Menu, que juntos forman la llave primaria.
-+**ADD FOREIGN KEY** permite agregar la llave foranea a la tabla, se crean dos queries debido a que son dos refencias a dos tablas disintas.
+
++ La sentencia **ALTER TABLE** permite modificar la estructura de la tabla Menu_Usuario.
++ **MODIFY** permite modificar el tipo de dato del campo Fecha_Habilitado.
++ **ADD CONSTRAINT** permite agregar la llave primaria a la tabla, entre los parentesis se agregan los 2 campos ID_Usuario y ID_Menu, que juntos forman la llave primaria.
++ **ADD FOREIGN KEY** permite agregar la llave foranea a la tabla, se crean dos queries debido a que son dos refencias a dos tablas disintas.
 
 ```sql
 CREATE TABLE Menu_Usuario (
