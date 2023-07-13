@@ -58,6 +58,26 @@ CREATE TABLE Historial_Conexion (
 	FOREIGN KEY (ID_Usuario) REFERENCES Usuario(ID)
 );
 ```
+
+La tabla **Menu** tendrá como llave primaria el campo ID, los campos ID, Titulo y Activo tendrán un **constraint** de tipo **NOT NULL** el cual sirve para garantizar que esos campos siempre tendrán valor.
+
+El campo Activo tendrá un **contraing** de tipo valor **DEFAULT** el cúal asignará el valor 0 de forma predeterminada cuando en la instrucción insert no se especifique el campo Activo. Ademas el campo Activa tendrá un **CHECK CONTRAINT** el cúal solo permitirá que el campo acepte los valores 0 o 1, ningún otro valor podrá ser almacenado en ese campo.
+
+La sentencia **AUTO_INCREMENT** sirve para indicar que el campo ID, será un correlativo automatico, manejado por la base de datos, es decir no es necesario especificar el valor cuando se inserten valores.
+
+La sentencia **PRIMARY KEY** sirve para indicar que campo o campos serán utilizados como llave primaria.
+
+```sql
+CREATE TABLE Menu (
+	ID INT NOT NULL AUTO_INCREMENT,
+	Titulo VARCHAR(50) NOT NULL, 
+	Descripcion VARCHAR(150), 
+	URL VARCHAR(150), 
+	Activo TINYINT DEFAULT 0 NOT NULL,
+	PRIMARY KEY (ID),
+	CONSTRAINT CHK_Menu_Activo CHECK (Activo IN (0, 1))
+);
+```
 :::
 
 Script para la **creación** de un **trigger** el cual va a ejecutar automaticamente justo **antes de insertar** un registro en la **tabla Usuario**, va a verificar si en el registro que se esta insertado, el campo Email esta vacio (NULL) o no, si esta vacio entonces va a asignarle un estado inactivo (Activo = 0).
