@@ -15,6 +15,7 @@ CREATE DATABASE Autenticacion;
 ```
 ### Script para creación de las tablas del diagrama ER.
 
+::: Script para creación de las tablas del diagrama ER.
 La tabla **Usuario** tendrá como llave primaria el campo ID, los campos ID y Nombre tendran un **constraint** de tipo **NOT NULL** el cual sirve para garantizar que esos campos siempre tendrán valor.
 
 La sentencia **AUTO_INCREMENT** sirve para indicar que el campo ID, será un correlativo automatico, manejado por la base de datos, es decir no es necesario especificar el valor cuando se inserten valores.
@@ -57,6 +58,7 @@ CREATE TABLE Historial_Conexion (
 	FOREIGN KEY (ID_Usuario) REFERENCES Usuario(ID)
 );
 ```
+:::
 
 Script para la **creación** de un **trigger** el cual va a ejecutar automaticamente justo **antes de insertar** un registro en la **tabla Usuario**, va a verificar si en el registro que se esta insertado, el campo Email esta vacio (NULL) o no, si esta vacio entonces va a asignarle un estado inactivo (Activo = 0).
 ```sql
