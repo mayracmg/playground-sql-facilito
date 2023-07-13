@@ -119,8 +119,8 @@ BEGIN
 	END IF;
 END$$
 ```
-El funcionamento del trigger puede ser probado con la ejecución de estos scripts. Al no especificar el campo Email, el trigger va a asignar un valor 0 al campo Activo. Cuando el campo Email si se especifica entonces el campo Activo tendrá valor 1.
 
+El funcionamento del trigger puede ser probado con la ejecución de estos scripts. Al no especificar el campo Email, el trigger va a asignar un valor 0 al campo Activo. Cuando el campo Email si se especifica entonces el campo Activo tendrá valor 1.
 ```sql
 INSERT INTO Usuario (Nombre, Apellido)
 VALUES ('Tu_Nombre', 'Tu_Apellido')
@@ -128,6 +128,17 @@ VALUES ('Tu_Nombre', 'Tu_Apellido')
 INSERT INTO Usuario (Nombre, Apellido, Email)
 VALUES ('Tu_Nombre', 'Tu_Apellido', 'nombre@gmail.com')
 ```
+Luego se comprobar el resultado con un query **SELECT** en la tabla Usuario.
+```sql
+SELECT *
+FROM Usuario;
+```
+El cual generará un resultado similar al siguiente:
+| ID | Nombre | Apellido | Email | Fecha_Nacimiento | Activo |
+| ------ | ----------- | ----------- | ----------- | ----------- | ----------- |
+| 1 | Tu_Nombre | Tu_Apellido | NULL | NULL | 0 |
+| 2 | Tu_Nombre | Tu_Apellido | nombre@gmail.com | NULL | 1 |
+
 :::
 
 :::
