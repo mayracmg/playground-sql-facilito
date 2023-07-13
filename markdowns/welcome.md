@@ -119,6 +119,15 @@ BEGIN
 	END IF;
 END$$
 ```
+El funcionamento del trigger puede ser probado con la ejecución de estos scripts. Al no especificar el campo Email, el trigger va a asignar un valor 0 al campo Activo. Cuando el campo Email si se especifica entonces el campo Activo tendrá valor 1.
+
+```sql
+INSERT INTO Usuario (Nombre, Apellido)
+VALUES ('Tu_Nombre', 'Tu_Apellido')
+
+INSERT INTO Usuario (Nombre, Apellido, Email)
+VALUES ('Tu_Nombre', 'Tu_Apellido', 'nombre@gmail.com')
+```
 :::
 
 :::
