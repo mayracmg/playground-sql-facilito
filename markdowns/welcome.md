@@ -26,7 +26,7 @@ La sentencia **PRIMARY KEY** sirve para indicar que campo o campos serán utiliz
 + El tipo de dato VARCHAR permite almacenar una cadena de caracteres de longitud 50 y/o 100 segun se especifique.
 + El tipo de dato DATE permite almacenar fechas (sin hora).
 + El tipo de dato TINYINT permite almacenar números desde -128 hasta 127.
-
++ **ALTER TABLE** permite modificar la tabla Usuario y agregarle un contraint del tipo **UNIQUE** de esa forma, los valores almacenados en el campo Email no podrán repetirse.
 ```sql
 CREATE TABLE Usuario (
 	ID INT NOT NULL AUTO_INCREMENT, 
@@ -37,6 +37,7 @@ CREATE TABLE Usuario (
 	Activo TINYINT,
 	PRIMARY KEY (ID)
 );
+ALTER TABLE Usuario ADD CONSTRAINT UK_Email UNIQUE (Email);
 ```
 ___
 La tabla **Historial_Conexion** tendrá como llave primaria el campo ID, los campos ID, ID_Usuario y Fecha_Hora tendrán un **constraint** de tipo **NOT NULL** el cual sirve para garantizar que esos campos siempre tendrán valor.
