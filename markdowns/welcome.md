@@ -102,6 +102,8 @@ ALTER TABLE Menu_Usuario ADD FOREIGN KEY (ID_Menu) REFERENCES Menu(ID);
 [Ver Diagrama ER con scripts](https://github.com/mayracmg/playground-sql-facilito/blob/f5753c08814bb14e3ecf1db49f46995fde1dbcc9/markdowns/ER%20con%20Scripts.png)
 :::
 
+## Creación de otros objetos
+::: Triggers
 Script para la **creación** de un **trigger** el cual va a ejecutar automaticamente justo **antes de insertar** un registro en la **tabla Usuario**, va a verificar si en el registro que se esta insertado, el campo Email esta vacio (NULL) o no, si esta vacio entonces va a asignarle un estado inactivo (Activo = 0).
 ```sql
 DELIMITER $$
@@ -117,6 +119,8 @@ BEGIN
 	END IF;
 END$$
 ```
+:::
+
 :::
 
 ::: DCL (Data Control Language)
