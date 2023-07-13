@@ -135,10 +135,10 @@ FROM Usuario;
 ```
 El cual generará un resultado similar al siguiente:
 
-| ID | Nombre |
-| ------ | ----------- |
-| 1   | path to data files to supply the data that will be passed into templates. |
-| 2 | engine to be used for processing templates. Handlebars is the default. |
+| ID | Nombre | Apellido |
+| ------ | ----------- | ----------- |
+| 1   | Tu_Nombre | Tu_Apellido |
+| 2 | Tu_Nombre | Tu_Apellido |
 
 
 | ID    | Nombre    | Apellido    | Email            | Fecha_Nacimiento | Activo |
