@@ -135,10 +135,16 @@ FROM Usuario;
 ```
 El cual generará un resultado similar al siguiente:
 
-| ID | Nombre | Apellido | Email | Fecha_Nacimiento | Activo |
-| -- | ------ | -------- | ----- | ---------------- | ------ |
-| 1 | Tu_Nombre | Tu_Apellido | NULL | NULL | 0 |
-| 2 | Tu_Nombre | Tu_Apellido | nombre@gmail.com | NULL | 1 |
+| Option | Description |
+| ------ | ----------- |
+| data   | path to data files to supply the data that will be passed into templates. |
+| engine | engine to be used for processing templates. Handlebars is the default. |
+| ext    | extension to be used for dest files. |
+
+| ID | Nombre    | Apellido    | Email            | Fecha_Nacimiento | Activo |
+| -- | --------- | ----------- | ---------------- | ---------------- | ------ |
+| 1  | Tu_Nombre | Tu_Apellido | NULL             | NULL             | 0      |
+| 2  | Tu_Nombre | Tu_Apellido | nombre@gmail.com | NULL             | 1      |
 
 :::
 
