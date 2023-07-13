@@ -51,7 +51,7 @@ La sentencia **FOREIGN KEY** sirve parea indicar que campo o campos será uitili
 CREATE TABLE Historial_Conexion (
 	ID INT NOT NULL AUTO_INCREMENT,
 	ID_Usuario INT NOT NULL,
-	Fecha_Hora DATETIME	 NOT NULL,
+	Fecha_Hora DATETIME NOT NULL,
 	IP VARCHAR(15), 
 	Navegador VARCHAR(50), 
 	PRIMARY KEY (ID),
