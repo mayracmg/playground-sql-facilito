@@ -14,7 +14,8 @@ Creación de una base de datos llamada Autenticación.
 CREATE DATABASE Autenticacion;
 ```
 
-::: ##Script para creación de las tablas del diagrama ER.
+##Script para creación de las tablas del diagrama ER.
+::: 
 La tabla **Usuario** tendrá como llave primaria el campo ID, los campos ID y Nombre tendran un **constraint** de tipo **NOT NULL** el cual sirve para garantizar que esos campos siempre tendrán valor.
 
 La sentencia **AUTO_INCREMENT** sirve para indicar que el campo ID, será un correlativo automatico, manejado por la base de datos, es decir no es necesario especificar el valor cuando se inserten valores.
