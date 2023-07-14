@@ -1,5 +1,5 @@
 # SQL Facilito
-<span style="color:blue">some *blue* text</span>.
+
 En esta sección encontrarás ejemplos de consultas SQL, clasificas en los 3 tipos que existen, DDL, DCL y DML.
 Los queries estan preparados para funcionar en una base de datos **MySQL**, puedes copiar los queries y ejecutarlos en tu propia base de datos.
 
@@ -177,6 +177,17 @@ BEGIN
 	RETURN Nombre_Completo;
 END $$
 ```
+En el siguiente ejemplo, la función es invocada desde la instrucción <span style="color:blue">SELECT</span> y el resultado se verá desplegado como cualquier campo.
++ _Nombre_Completo_ es un alias, los alias son opcionales, pero mejoran la visualización de los datos.
+```sql
+SELECT ID, Fn_Nombre_Completo(id) Nombre_Completo
+FROM Usuario;
+```
+El cual generará un resultado similar al siguiente:
+
+| ID | Nombre_Completo |
+| ------ | ----------- |
+| 1   | MAY CODE |
 :::
 
 
