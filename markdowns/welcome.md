@@ -104,7 +104,8 @@ ALTER TABLE Menu_Usuario ADD FOREIGN KEY (ID_Menu) REFERENCES Menu(ID);
 
 ## Creación de otros objetos
 ::: Triggers
-Script para la **creación** de un **trigger** el cual va a ejecutar automaticamente justo **antes de insertar** un registro en la **tabla Usuario**, va a verificar si en el registro que se esta insertado, el campo Email esta vacio (NULL) o no, si esta vacio entonces va a asignarle un estado inactivo (Activo = 0).
+Script para la _creación_ de un _trigger_ el cual va a ejecutar automaticamente justo _antes de insertar_ un registro en la _tabla Usuario_, va a verificar si en el registro que se esta insertado, el campo Email esta vacio (NULL) o no, si esta vacio entonces va a asignarle un estado inactivo (Activo = 0).
++ **DELIMITER** Sirve para indicarle a MySQL donde finaliza el bloque de código.
 ```sql
 DELIMITER $$
 
@@ -148,6 +149,7 @@ Script para la **creación** de una **función** la cual va a concatenar el nomb
 
 La función podrá ser invocada desde cualquier consulta DML, por ejemplo una consulta **SELECT**.
 
++ **DELIMITER** Sirve para indicarle a MySQL donde finaliza el bloque de código.
 + **DROP FUNCTION IF EXISTS** borrará la función si es que ya existe, para luego crearla nuevamente. Sin esta instrucción, el script **CREATE FUNCTION** solo funcionaría una vez y para modificaciones posteriores sería necesario utilizar un **ALTER FUNCTION**.
 + **RETURNS VARCHAR(101)** indica que el tipo de dato del resultado de la función será una cadena de texto de longitud maxima 101 caracteres.
 + **READS SQL DATA** sin esta instrucción la instrucción **SELECT** daría error.
@@ -190,7 +192,27 @@ El cual generará un resultado similar al siguiente:
 | 1   | MAY CODE |
 :::
 
+::: Procedimientos (Stored Procedures)
+Script para la creación de un procedimiento, parentesis vacios indica que no recibe parametros. Cada vez que se ejecute, leerá la tabla _Historial_conexion_, filtará las filas que tengan el campo _IP_ con valor _NULL_ y les asignará el valor '0.0.0.0'.
++ **DELIMITER** Sirve para indicarle a MySQL donde finaliza el bloque de código.
++ **DROP FUNCTION IF EXISTS** borrará la función si es que ya existe, para luego crearla nuevamente. Sin esta instrucción, el script **CREATE FUNCTION** solo funcionaría una vez y para modificaciones posteriores sería necesario utilizar un **ALTER FUNCTION**.
 
+```sql
+DELIMITER $$
+
+DROP PROCEDURE IF EXISTS SP_Actualizar_IP_Vacia;
+CREATE PROCEDURE SP_Actualizar_IP_Vacia()
+BEGIN
+	UPDATE Historial_conexion
+	SET IP = '0.0.0.0'
+	WHERE IP IS NULL;
+END $$
+```
++ **CALL** ejecuta el procedimiento, entre los parentesis se especificarían los parametros, si los hubiera.
+
+```sql
+CALL SP_Actualizar_IP_Vacia();
+```
 :::
 
 ::: DCL (Data Control Language)
