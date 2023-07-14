@@ -142,6 +142,44 @@ El cual generará un resultado similar al siguiente:
 
 :::
 
+::: Funciones
+
+Script para la **creación** de una **función** la cual va a concatenar el nombre y apellido del usuario en un solo campo y lo convertirá a mayusculas. El **parametro de entrada** es el ID de la tabla Usuario. 
+
+La función podrá ser invocada desde cualquier consulta DML, por ejemplo una consulta **SELECT**.
+
++ **DROP FUNCTION IF EXISTS** borrará la función si es que ya existe, para luego crearla nuevamente. Sin esta instrucción, el script **CREATE FUNCTION** solo funcionaría una vez y para modificaciones posteriores sería necesario utilizar un **ALTER FUNCTION**.
++ **RETURNS VARCHAR(101)** indica que el tipo de dato del resultado de la función será una cadena de texto de longitud maxima 101 caracteres.
++ **READS SQL DATA** sin esta instrucción la instrucción **SELECT** daría error.
++ El parametro de entrada va dentro de parentesis justo despues del nombre la función.
++ **DECLARE** permite declarar la variable que será utilizada para almacenar el nombre completo del usuario.
++ **CONCAT** concatena el primer nombre, un espacio en blanco y el appelido del usuario en un solo campo.
++ **UPPER** convierte el resultado de la concatenación en mayusculas.
++ **INTO** permiate almacenar el resultado del select en la variable declarada.
++ **RETURN** la última instrucción de una función debe ser devolver el resultado generado.
+```sql
+DELIMITER $$
+
+DROP FUNCTION IF EXISTS Fn_Nombre_Completo;
+CREATE FUNCTION Fn_Nombre_Completo(
+    ID_Usuario INT
+)
+RETURNS VARCHAR(101)
+READS SQL DATA
+BEGIN
+	DECLARE Nombre_Completo VARCHAR(101);
+	
+	SELECT UPPER(CONCAT(Nombre, ' ', Apellido))
+	INTO Nombre_Completo
+	FROM Usuario
+	WHERE ID = ID_Usuario;
+
+	RETURN Nombre_Completo;
+END $$
+```
+:::
+
+
 :::
 
 ::: DCL (Data Control Language)
