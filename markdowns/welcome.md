@@ -145,14 +145,14 @@ El cual generará un resultado similar al siguiente:
 
 ::: Funciones
 
-Script para la **creación** de una **función** la cual va a concatenar el nombre y apellido del usuario en un solo campo y lo convertirá a mayusculas. El **parametro de entrada** es el ID de la tabla Usuario. 
+Script para la _creación_ de una _función_ la cual va a concatenar el nombre y apellido del usuario en un solo campo y lo convertirá a mayusculas. El _parametro de entrada_ es el ID de la tabla Usuario. 
 
-La función podrá ser invocada desde cualquier consulta DML, por ejemplo una consulta **SELECT**.
+La función podrá ser invocada desde cualquier consulta DML, por ejemplo una consulta <span style="color:blue">SELECT</span>.
 
 + **DELIMITER** Sirve para indicarle a MySQL donde finaliza el bloque de código.
 + **DROP FUNCTION IF EXISTS** borrará la función si es que ya existe, para luego crearla nuevamente. Sin esta instrucción, el script **CREATE FUNCTION** solo funcionaría una vez y para modificaciones posteriores sería necesario utilizar un **ALTER FUNCTION**.
 + **RETURNS VARCHAR(101)** indica que el tipo de dato del resultado de la función será una cadena de texto de longitud maxima 101 caracteres.
-+ **READS SQL DATA** sin esta instrucción la instrucción **SELECT** daría error.
++ **READS SQL DATA** sin esta instrucción la instrucción <span style="color:blue">SELECT</span> daría error.
 + El parametro de entrada va dentro de parentesis justo despues del nombre la función.
 + **DECLARE** permite declarar la variable que será utilizada para almacenar el nombre completo del usuario.
 + **CONCAT** concatena el primer nombre, un espacio en blanco y el appelido del usuario en un solo campo.
