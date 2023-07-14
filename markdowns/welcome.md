@@ -195,7 +195,7 @@ El cual generará un resultado similar al siguiente:
 ::: Procedimientos (Stored Procedures)
 Script para la creación de un procedimiento, parentesis vacios indica que no recibe parametros. Cada vez que se ejecute, leerá la tabla _Historial_conexion_, filtará las filas que tengan el campo _IP_ con valor _NULL_ y les asignará el valor '0.0.0.0'.
 + **DELIMITER** Sirve para indicarle a MySQL donde finaliza el bloque de código.
-+ **DROP FUNCTION IF EXISTS** borrará la función si es que ya existe, para luego crearla nuevamente. Sin esta instrucción, el script **CREATE FUNCTION** solo funcionaría una vez y para modificaciones posteriores sería necesario utilizar un **ALTER FUNCTION**.
++ **DROP PROCEDURE IF EXISTS** borrará el procedimiento si es que ya existe, para luego crearla nuevamente. Sin esta instrucción, el script **CREATE PROCEDURE** solo funcionaría una vez y para modificaciones posteriores sería necesario utilizar un **ALTER PROCEDURE**.
 
 ```sql
 DELIMITER $$
