@@ -339,9 +339,9 @@ LIMIT 3;
 + La vista se puede utilizar de la misma forma que cualquier tabla. Se le puede agregar mas filtros en el <span style="color:blue">WHERE</span> si asi se deseara.
 ```sql
 CREATE VIEW Usuarios_Activos AS
-SELECT *
-FROM Usuario
-WHERE Activo = 1;
+    SELECT *
+    FROM Usuario
+    WHERE Activo = 1;
 
 SELECT *
 FROM Usuarios_Activos;
