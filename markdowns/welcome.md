@@ -270,8 +270,11 @@ REVOKE DELETE ON Menu FROM WebSite;
 :::
 
 ::: DML (Data Manipulation Language) 
+::: SELECTS
+
 Queries que permiten leer todos los campos para cada una de la tablas creadas previamente.
-+ <span style="color:blue">*</span> Indica que se leerán todos los campos de la tabla.
++ <span style="color:blue">SELECT *</span> Indica que se leerán todos los campos de la tabla.
++ <span style="color:blue">FROM</span> Luego de este texto se especifica el nombre de la tabla (o tablas) a leer.
 
 ```sql
 SELECT *
@@ -307,4 +310,22 @@ FROM Usuario U
 WHERE Activo = 1
 AND Fecha_Nacimiento IS NULL;
 ```
+
++ <span style="color:blue">ORDER BY</span> Luego de este texto se especifica el nombre del campo (o campos) para aplicar el ordenamiento.
+Se leer el hsitorial de conexion ordenados por dirección IP de forma ascendente.
+```sql
+SELECT *
+FROM Historial_Conexion
+ORDER BY IP;
+```
+
++ <span style="color:blue">DESC</span> Indica que el ordenamiento será descendente.
++ <span style="color:blue">ASC</span> Indica que el ordenamiento será ascendente, si no se especifica **ASC** o **DESC**, por default el ordenamiento será ascendente.
+Se leer el hsitorial de conexion ordenados por Fecha y Hora de forma descendente.
+```sql
+SELECT *
+FROM Historial_Conexion
+ORDER BY Fecha_Hora DESC;
+```
+:::
 :::
