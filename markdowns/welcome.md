@@ -270,9 +270,41 @@ REVOKE DELETE ON Menu FROM WebSite;
 :::
 
 ::: DML (Data Manipulation Language) 
-Creación de una base de datos llamada Autenticación.
+Queries que permiten leer todos los campos para cada una de la tablas creadas previamente.
++ <span style="color:blue">*</span> Indica que se leerán todos los campos de la tabla.
 
 ```sql
-CREATE DATABASE Autenticacion;
+SELECT *
+FROM Usuario;
+
+SELECT *
+FROM Historial_Conexion;
+
+SELECT *
+FROM Menu;
+
+SELECT *
+FROM Menu_Usuario;
+```
+
++ <span style="color:blue">SELECT Nombre, Apellido</span> para leer unicamente los campos Nombre y Apellido. Los campos se separan por comas.
+
+```sql
+SELECT Nombre, Apellido
+FROM Usuario;
+```
+
++ <span style="color:blue">Nombre Primer_Nombre</span> _Nombre_ es el nombre del campo en la tabla, _Primer_Nombre es un *alias* para el campo, los alias es otra forma de referise al campo, son opcionales.
++ <span style="color:blue">Usuario U</span> La letra _U_ es un alias para la tabla _Usuario_, los alias son muy comunes cuando en una misma consulta hay varias tablas.
++ <span style="color:blue">WHERE</span> Aca se especifican los filtros, para solo obtener las filas que cumplan las condiciones especificadas.
++ **Activo = 1** para filtrar solo las filas que en la columna _Activo_ tengan valor igual a 1.
++ <span style="color:blue">AND</span> para unir varios filtros dentro de la clausula <span style="color:blue">WHERE</span>.
++ **Fecha_Nacimiento IS NULL** para filtrar solo las filas que en la columna Fecha_Nacimiento tengan valor igual a _NULL_.
+
+```sql
+SELECT Nombre Primer_Nombre, Apellido
+FROM Usuario U
+WHERE Activo = 1
+AND Fecha_Nacimiento IS NULL;
 ```
 :::
