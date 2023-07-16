@@ -372,4 +372,18 @@ INSERT INTO Menu
 (Titulo, Descripcion, URL, Activo)
 VALUES ('Tipo Cuenta', 'Configuración de tipo de cuenta', '/Configuración/TipoCuenta', 5);
 ```
+
++ Luego de corregir el valor del campo _Activo_ el query debera ejecutarse satisfactoriamente.
+```sql
+INSERT INTO Menu 
+(Titulo, Descripcion, URL, Activo)
+VALUES ('Tipo Cuenta', 'Configuración de tipo de cuenta', '/Configuración/TipoCuenta', 0);
+```
+
+Luego de haber insertado varios valores, podemos leer por ejemplo unicamente 3 filas de la tabla _Menu_ por medio de la instrucción <span style="color:blue">LIMIT</span>.
+```sql
+SELECT *
+FROM Menu
+LIMIT 3;
+```
 :::
