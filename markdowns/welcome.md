@@ -227,10 +227,18 @@ CREATE USER Developer1 IDENTIFIED BY 'Contraseña#2';
 CREATE USER Developer2 IDENTIFIED BY 'Contraseña#3';
 ```
 
-Asignación de permisos:
+## Asignación de permisos:
 + Al usuario _WebSite_, el usuario tendrá todos los permisos sobre las tablas, excepto la tabla _Usuario_, sobre la tabla _Usuario_ no podrá eliminar usuario.
 + Al usuario _Developer1_ se la asignará todos los permisos sobre las tablas _Menu_ y _Menu_Usuario_, sobre las tablas _Usuario_ y _Historial_Conexion_ solo tendrá permiso de lectura, para evitar que Developer1 haga modificaciones sobre esas tablas.
 + Al usuario _Developer2_ solo se le asignará permiso de lectura sobre las tablas _Menu_ y _Menu_Usuario_, sobre las tablas _Usuario_ y _Historial_Conexion_ no tendrá ningun acceso.
+
++ <span style="color:blue">GRANT</span> sentencia para otorgar permisos.
++ <span style="color:blue">SELECT</span> para asignar permiso de lectura sobre la tabla especificada.
++ <span style="color:blue">INSERT</span> para asignar permiso de inserción sobre la tabla especificada.
++ <span style="color:blue">UPDATE</span> para asignar permiso de actualización sobre la tabla especificada.
++ <span style="color:blue">DELETE</span> para asignar permiso de eliminación sobre la tabla especificada.
++ <span style="color:blue">ON</span> luego de este texto se indica el nombre de la tabla a la cual se le quiere asignar los permisos.
++ <span style="color:blue">TO</span> luego de este texto se indica el nombre del usuario al cual se le quiere asignar los permisos.
 
 ```sql
 GRANT SELECT, INSERT, UPDATE ON Usuario TO WebSite;
@@ -247,6 +255,18 @@ GRANT SELECT ON Menu TO Developer2;
 GRANT SELECT ON Menu_Usuario TO Developer2;
 ```
 
++ Al usuario _WebSiste_ se le quitará el acceso de eliminar sobre la tabla _Menu_.
+
++ <span style="color:blue">REVOKE</span> sentencia para revocar o quitar permisos.
++ <span style="color:blue">SELECT</span> para quitar permiso de lectura sobre la tabla especificada.
++ <span style="color:blue">INSERT</span> para quitar permiso de inserción sobre la tabla especificada.
++ <span style="color:blue">UPDATE</span> para quitar permiso de actualización sobre la tabla especificada.
++ <span style="color:blue">DELETE</span> para quitar permiso de eliminación sobre la tabla especificada.
++ <span style="color:blue">ON</span> luego de este texto se indica el nombre de la tabla a la cual se le quiere quitar los permisos.
++ <span style="color:blue">FROM</span> luego de este texto se indica el nombre del usuario al cual se le quiere quitar los permisos.
+```sql
+REVOKE DELETE ON Menu FROM WebSite;
+```
 :::
 
 ::: DML (Data Manipulation Language) 
