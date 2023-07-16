@@ -198,7 +198,7 @@ Script para la creación de un procedimiento, parentesis vacios indica que no re
 + **DROP PROCEDURE IF EXISTS** borrará el procedimiento si es que ya existe, para luego crearla nuevamente. Sin esta instrucción, el script **CREATE PROCEDURE** solo funcionaría una vez y para modificaciones posteriores sería necesario utilizar un **ALTER PROCEDURE**.
 
 ```sql
-DELIMITER $$
+DELIMITER //
 
 DROP PROCEDURE IF EXISTS SP_Actualizar_IP_Vacia;
 CREATE PROCEDURE SP_Actualizar_IP_Vacia()
@@ -206,7 +206,7 @@ BEGIN
 	UPDATE Historial_conexion
 	SET IP = '0.0.0.0'
 	WHERE IP IS NULL;
-END $$
+END //
 ```
 + **CALL** ejecuta el procedimiento, entre los parentesis se especificarían los parametros, si los hubiera.
 
@@ -218,12 +218,34 @@ CALL SP_Actualizar_IP_Vacia();
 
 ::: DCL (Data Control Language)
 
-Creación de una base de datos llamada Autenticación.
-
+Creación de 3 usuarios, el proposito del usuario _WebSite_ es ser utilizado desde un API o sistema que se conecte a la base de datos.
+El proposito de los usuarios _Developer1_ y _Developer2_ es ser utilizados por 2 personas distintas y de acuerdo a sus responsabilidades serán asignados sus permisos.
+*CREATE USER* son sentencias DDL, es necesario que existan usuarios previo a asignarles permisos.
 ```sql
-CREATE DATABASE Autenticacion;
+CREATE USER WebSite IDENTIFIED BY 'Contraseña#1';
+CREATE USER Developer1 IDENTIFIED BY 'Contraseña#2';
+CREATE USER Developer2 IDENTIFIED BY 'Contraseña#3';
 ```
 
+Asignación de permisos:
++ Al usuario _WebSite_, el usuario tendrá todos los permisos sobre las tablas, excepto la tabla _Usuario_, sobre la tabla _Usuario_ no podrá eliminar usuario.
++ Al usuario _Developer1_ se la asignará todos los permisos sobre las tablas _Menu_ y _Menu_Usuario_, sobre las tablas _Usuario_ y _Historial_Conexion_ solo tendrá permiso de lectura, para evitar que Developer1 haga modificaciones sobre esas tablas.
++ Al usuario _Developer2_ solo se le asignará permiso de lectura sobre las tablas _Menu_ y _Menu_Usuario_, sobre las tablas _Usuario_ y _Historial_Conexion_ no tendrá ningun acceso.
+
+```sql
+GRANT SELECT, INSERT, UPDATE ON Usuario TO WebSite;
+GRANT SELECT, INSERT, UPDATE, DELETE ON Historial_Conexion TO WebSite;
+GRANT SELECT, INSERT, UPDATE, DELETE ON Menu TO WebSite;
+GRANT SELECT, INSERT, UPDATE, DELETE ON Menu_Usuario TO WebSite;
+
+GRANT SELECT ON Usuario TO Developer1;
+GRANT SELECT ON Historial_Conexion TO Developer1;
+GRANT SELECT, INSERT, UPDATE, DELETE ON Menu TO Developer1;
+GRANT SELECT, INSERT, UPDATE, DELETE ON Menu_Usuario TO Developer1;
+
+GRANT SELECT ON Menu TO Developer2;
+GRANT SELECT ON Menu_Usuario TO Developer2;
+```
 
 :::
 
