@@ -327,11 +327,16 @@ SELECT *
 FROM Historial_Conexion
 ORDER BY Fecha_Hora DESC;
 ```
+
+Podemos leer por ejemplo unicamente 3 filas de la tabla _Menu_ por medio de la instrucción <span style="color:blue">LIMIT</span>.
+```sql
+SELECT *
+FROM Menu
+LIMIT 3;
+```
 :::
 
 ::: INSERTS
-
-:::
 Distintos ejemplos de como usar la inserción de datos.
 
 + <span style="color:blue">INSERT INTO</span> Luego de este texto debe de ir el nombre de la tabla.
@@ -380,10 +385,39 @@ INSERT INTO Menu
 VALUES ('Tipo Cuenta', 'Configuración de tipo de cuenta', '/Configuración/TipoCuenta', 0);
 ```
 
-Luego de haber insertado varios valores, podemos leer por ejemplo unicamente 3 filas de la tabla _Menu_ por medio de la instrucción <span style="color:blue">LIMIT</span>.
+Creación de una tabla temporal, la cual será una copia exacta de la tabla _Menu_, sobre la tabla temporal se puede hacer cualquier operación, podemos eliminar la tabla con <span style="color:blue">DROP TABLE</span>, o al finalizar la sesión, en automatico la tabla será eliminada.
++ Inserción de 2 filas nuevas, sobre la tabla temporal Menu_Copia.
 ```sql
-SELECT *
-FROM Menu
-LIMIT 3;
+CREATE TEMPORARY TABLE Menu_Copia SELECT * FROM Menu;
+
+INSERT INTO Menu_Copia 
+(Titulo, Descripcion, URL, Activo)
+VALUES ('Asociar Facebook', 'Asociar cuenta de Facebook', '/Configuración/Facebook', 1);
+
+INSERT INTO Menu_Copia 
+(Titulo, Descripcion, URL, Activo)
+VALUES ('Asociar Google', 'Asociar cuenta de Google', '/Configuración/Google', 1);
 ```
+
++ La tabla Menu_Copia contiene todos los valores de la tabla _Menu_ y adicional las 2 filas recien insertadas.
++ Se filtran las filas que el texto del campo _Titulo_ comienza con el texto _Asociar_, para eso se usa la clasula <span style="color:blue">LIKE</span>.
++ <span style="color:blue">%</span> Indica que alli puede ir cualquier texto.
+```sql
+SELECT Titulo, Descripcion, URL, Activo
+FROM Menu_Copia
+WHERE Titulo LIKE 'Asociar%'
+```
+
++ Ahora la clausula <span style="color:blue">INSERT</span> ya no contiene la instrucción <span style="color:red">VALUES</span>, en lugar de eso, se insertarán todas filas que sean resultado de la clasula <span style="color:blue">SELECT</span>.
+```sql
+INSERT INTO Menu (Titulo, Descripcion, URL, Activo)
+SELECT Titulo, Descripcion, URL, Activo
+FROM Menu_Copia
+WHERE Titulo LIKE 'Asociar%'
+```
+
+:::
+
+::: Tabla Temporal
+
 :::
