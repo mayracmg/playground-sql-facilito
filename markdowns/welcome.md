@@ -328,4 +328,48 @@ FROM Historial_Conexion
 ORDER BY Fecha_Hora DESC;
 ```
 :::
+
+::: INSERTS
+
+:::
+Distintos ejemplos de como usar la inserción de datos.
+
++ <span style="color:blue">INSERT INTO</span> Luego de este texto debe de ir el nombre de la tabla.
++ **Entre los parentesis** se incluye la lista de campos a insertar.
++ <span style="color:blue">VALUES</span> Luego de este texto deben de ir los valores de los campos que se especificarón antes, en el mismo orden.
++ El campo _ID_ no se especifica, entonces la clausula <span style="color:blue">AUTO_INCREMENT</span> creará el valor correspondiente de form automatica.
+
+```sql
+INSERT INTO Menu 
+(Titulo, Descripcion, URL, Activo)
+VALUES ('Configuración', 'Menu de configuración', '/Configuración', 1);
+```
+
++ El campo _ID_ si se especifica con un valor que ya existe, por lo que se generará un <span style="color:red">error</span>.
+```sql
+INSERT INTO Menu 
+(ID, Titulo, Descripcion, URL, Activo)
+VALUES (1, 'Contraseña', 'Configuración de contraseña', '/Configuración/Contraseña', 1);
+```
+
++ El campo _ID_ si se especifica, entonces la clausula se guardará con ese valor. No se tomará en cuenta el <span style="color:blue">AUTO_INCREMENT</span>.
+```sql
+INSERT INTO Menu 
+(ID, Titulo, Descripcion, URL, Activo)
+VALUES (5, 'Contraseña', 'Configuración de contraseña', '/Configuración/Contraseña', 1);
+```
+```sql
+
++ Como se estan insertando valores para **todas las columnas** de la tabla, no es obligatorio especificar la lista de campos.
++ Los valores deben de ir en el mismo orden en que se especificaron los campos en el <span style="color:blue">CREATE TABLE</span>.
+INSERT INTO Menu 
+VALUES (3, 'Tema', 'Configuración de tema oscuro o claro', '/Configuración/Tema', 1);
+```
+
++ Como se estan insertando un valor **5** en el campo _Activo_ el cúal no es valido segun el <span style="color:blue">CHECK CONSTRAINT</span> que se creó, el query dará un <span style="color:red">error</span>.
+```sql
+INSERT INTO Menu 
+(Titulo, Descripcion, URL, Activo)
+VALUES ('Tipo Cuenta', 'Configuración de tipo de cuenta', '/Configuración/TipoCuenta', 5);
+```
 :::
