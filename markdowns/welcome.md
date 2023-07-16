@@ -363,10 +363,11 @@ INSERT INTO Menu
 (ID, Titulo, Descripcion, URL, Activo)
 VALUES (5, 'Contraseña', 'Configuración de contraseña', '/Configuración/Contraseña', 1);
 ```
-```sql
 
 + Como se estan insertando valores para **todas las columnas** de la tabla, no es obligatorio especificar la lista de campos.
 + Los valores deben de ir en el mismo orden en que se especificaron los campos en el <span style="color:blue">CREATE TABLE</span>.
+
+```sql
 INSERT INTO Menu 
 VALUES (3, 'Tema', 'Configuración de tema oscuro o claro', '/Configuración/Tema', 1);
 ```
