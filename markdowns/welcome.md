@@ -387,6 +387,7 @@ VALUES ('Tipo Cuenta', 'Configuración de tipo de cuenta', '/Configuración/Tipo
 
 Creación de una tabla temporal, la cual será una copia exacta de la tabla _Menu_, sobre la tabla temporal se puede hacer cualquier operación, podemos eliminar la tabla con <span style="color:blue">DROP TABLE</span>, o al finalizar la sesión, en automatico la tabla será eliminada.
 + Inserción de 2 filas nuevas, sobre la tabla temporal Menu_Copia.
+
 ```sql
 CREATE TEMPORARY TABLE Menu_Copia SELECT * FROM Menu;
 
