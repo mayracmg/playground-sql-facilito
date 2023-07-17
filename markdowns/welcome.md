@@ -517,4 +517,26 @@ AND ID <= 8;
 -[x] Base de Datos
 -[ ] RDBS
 
+?[¿Que tipo de base de datos organiza los datos en filas y columnas, que en conjunto forman una tabla?]
+-[ ] NoSQL
+-[ ] Documental
+-[ ] Distribuida
+-[x] Relacional
+
+?[Ejemplos de gestores de bases de datos relacionales (RDBMS).]
+-[x] MySQL
+-[ ] MongoDB
+-[x] Oracle
+-[ ] Apache HBase
+
+?[¿Que significa SQL?.]
+-[ ] Solo Quiero Limpiar
+-[x] Lenguaje Estructura de Consulta
+
+?[¿Que tipo de instrucción es un **CREATE TABLE**]
+-[x] DDL: Data Definition Language
+-[ ] DCL: Data Control Language
+-[ ] DML: Data Control Language
+-[ ] TCL: Transaction Control Language
+
 :::
