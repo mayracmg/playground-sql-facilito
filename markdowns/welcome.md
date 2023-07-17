@@ -556,9 +556,50 @@ AND ID <= 8;
 -[ ] Procedimientos.
 
 ?[Tipo de Objeto que al ser invocado realiza una acción, pero nunca puede ser invocado manualmente.]
--[ ] Constraints.
+-[ ] Tablas.
 -[ ] Vistas.
 -[x] Triggers.
 -[ ] Procedimientos.
+
+?[Tipo de Objeto que solamente soporta parámetros de entrada y siempre debe contener una cláusula RETURNS.]
+-[ ] Tablas.
+-[x] Funciones.
+-[ ] Selects.
+-[ ] Procedimientos.
+
+?[Tipo de Objeto que soporta parámetros de entrada y de salida y no retornan un valor.]
+-[ ] Tablas.
+-[ ] Funciones.
+-[ ] Triggers.
+-[x] Procedimientos.
+
+?[Pertenece al grupo de instrucciones DML.]
+-[x] SELECT.
+-[x] INSERT.
+-[x] UPDATE.
+-[x] DELETE.
+
+?[Query para leer todos los campos de la tabla Menu.]
+-[x] SELECT * FROM Menu.
+-[ ] SELECT ALL FROM Menu.
+-[ ] SELECT FROM Menu.
+
+?[Query para leer todos los campos de la tabla Menu que tengan ID mayor que 10.]
+-[ ] SELECT * FROM Menu WHERE ID >= 10.
+-[x] SELECT * FROM Menu WHERE ID > 10.
+-[ ] SELECT * FROM Menu AND ID >= 10.
+-[ ] SELECT * FROM Menu AND ID > 10.
+
+?[Estructura del Query para insertar datos en la tabla Menu.]
+-[ ] INSERT INTO Menu (Campo1, Campo2, etc) ('Valor 1', 'Valor 2', etc).
+-[ ] INSERT INTO Menu ('Valor 1', 'Valor 2', etc).
+-[x] INSERT INTO Menu (Campo1, Campo2, etc) VALUES ('Valor 1', 'Valor 2', etc).
+-[ ] INSERT Menu (Campo1, Campo2, etc) VALUES ('Valor 1', 'Valor 2', etc).
+
+?[Query para insertar los campos Titulo y Descripcion en la tabla Menu con los valores 'Menu' y 'Menu Principal' respectivamente.]
+-[ ] INSERT INTO Menu (Titulo, Descripcion) VALUES (Menu, Menu Principal).
+-[ ] INSERT INTO Menu (Titulo, Descripcion) VALUES ('Menu Principal', 'Menu').
+-[ ] INSERT INTO Menu (Titulo, Descripcion) ('Menu', 'Menu Principal').
+-[x] INSERT INTO Menu (Titulo, Descripcion) VALUES ('Menu', 'Menu Principal').
 
 :::
