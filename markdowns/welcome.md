@@ -508,3 +508,13 @@ AND ID <= 8;
 ```
 :::
 :::
+
+::: QUIZ
+
+?[Es una colección de datos organizada en un formato estructurado.]
+-[ ] MySQL
+-[ ] Excel
+-[x] Base de Datos
+-[ ] RDBS
+
+:::
