@@ -430,8 +430,41 @@ FROM Menu_Copia
 WHERE Titulo LIKE 'Asociar%'
 ```
 
+::: Updates
+
+Actualización de todos los registros de la tabla _Menu_, el campo _Activo_ se le asigna el valor 1.
+```sql
+UPDATE Menu
+SET Activo = 1;
+```
+
+Actualización de todos los registros de la tabla _Menu_, el campo _Activo_ se le asigna el valor 0 y el campo _URL_ se cambian todos sus caracteres a minusculas con la funcion <span style="color:blue">LOWER</span>.
+```sql
+UPDATE Menu
+SET Activo = 0, URL = LOWER(URL);
+```
+
+Actualización de un único registro de la tabla _Menu_, el campo _Activo_ se le asigna el valor 1 solo para la fila que tiene el campo _ID_ igual a 1.
+```sql
+UPDATE Menu
+SET Activo = 1
+WHERE ID = 1;
+```
+
+Actualización de ningun registro de la tabla _Menu_, el campo _Activo_ se trata de asignar el valor 1 solo para la fila que tiene el campo _ID_ igual a 500, pero no hay ninguna fila con ese valor, el query se ejecuta satisfactoriamente dando como resultado ninguna fila actualizada.
+```sql
+UPDATE Menu
+SET Activo = 1
+WHERE ID = 500;
+```
+
+Actualización de varios registros de la tabla _Menu_, el campo _Activo_ se le asigna el valor 1 solo para la fila que el campo _ID_ esta contenido en la lista de valores (2, 3, 4).
+```sql
+UPDATE Menu
+SET Activo = 1
+WHERE ID IN (2, 3, 4)
+```
+:::
 :::
 
-::: Tabla Temporal
 
-:::
