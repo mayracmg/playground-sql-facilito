@@ -602,4 +602,27 @@ AND ID <= 8;
 -[ ] INSERT INTO Menu (Titulo, Descripcion) ('Menu', 'Menu Principal').
 -[x] INSERT INTO Menu (Titulo, Descripcion) VALUES ('Menu', 'Menu Principal').
 
+?[Query para modificar el campo Activo de la tabla Menu y asignarle el valor 1 a todas las filas.]
+-[x] UPDATE Menu SET Activo = 1;
+-[ ] UPDATE Activo = 1 FROM Menu;
+-[ ] UPDATE Menu Activo = 1;
+-[ ] UPDATE Menu WHERE Activo = 1;
+
+?[Query para modificar el campo Activo de la tabla Menu y asignarle el valor 0 a las filas con ID menor igual a 5.]
+-[x] UPDATE Menu SET Activo = 0 WHERE ID <= 5;
+-[ ] UPDATE Activo = 0 FROM Menu WHERE ID <= 5;
+-[ ] UPDATE Activo = 0 FROM Menu WHERE ID < 5;
+-[ ] UPDATE Menu SET Activo = 0 WHERE ID < 5;
+
+?[El query para eliminar todos los registros de la tabla Menu.]
+-[ ] DELETE Menu;
+-[ ] DROP Menu.
+-[x] DELETE FROM Menu;
+-[ ] TRUNCATE Menu;
+
+?[Alternativa al DELETE para eliminar todos los registros de la tabla Menu.]
+-[ ] DELETE Menu;
+-[ ] DROP Menu.
+-[ ] TRUNCATE Menu;
+-[x] TRUNCATE TABLE Menu;
 :::
