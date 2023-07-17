@@ -481,6 +481,7 @@ FROM Historial_Conexion;
 ```
 
 Eliminación de todos los registros de la tabla _Historial_Conexion_.
+
 <span style="color:red">*</span> Es muy importante ser cuidados al momento de ejecutar un query <span style="color:red">DELETE</span> para no eliminar registros que no se debian eliminar.
 <span style="color:blue">WHERE 1 = 1</span> es equivalente a que no haya ninguna condición.
 ```sql
