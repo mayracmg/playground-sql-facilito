@@ -429,8 +429,8 @@ SELECT Titulo, Descripcion, URL, Activo
 FROM Menu_Copia
 WHERE Titulo LIKE 'Asociar%'
 ```
-
-::: Updates
+:::
+::: UPDATES
 
 Actualización de todos los registros de la tabla _Menu_, el campo _Activo_ se le asigna el valor 1.
 ```sql
@@ -464,7 +464,11 @@ UPDATE Menu
 SET Activo = 1
 WHERE ID IN (2, 3, 4)
 ```
-:::
-:::
 
+Actualización de todos los registros de la tabla _Menu_, al campo _Activo_ se le trata de asignar el valor 5, pero como la tabla tiene un <span style="color:blue">CHECK CONSTRAINT</span> que no permite esos valores, entonces se generará un <span style="color:red">error</span>.
+```sql
+UPDATE Menu
+SET Activo = 5;
+```
+:::
 
