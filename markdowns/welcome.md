@@ -530,13 +530,35 @@ AND ID <= 8;
 -[ ] Apache HBase
 
 ?[¿Que significa SQL?.]
--[ ] Solo Quiero Limpiar
--[x] Lenguaje Estructura de Consulta
+-[ ] Solo Quiero Llorar
+-[x] Lenguaje Estructurado de Consulta (Structured Query Language)
 
-?[¿Que tipo de instrucción es un **CREATE TABLE**]
+?[¿Que tipo de instrucción es un CREATE TABLE]
 -[x] DDL: Data Definition Language
 -[ ] DCL: Data Control Language
 -[ ] DML: Data Control Language
 -[ ] TCL: Transaction Control Language
+
+?[¿Para que sirve GRANT y REVOKE?]
+-[x] Otorgar y quitar accesos.
+-[ ] Otorgar accesos y quitar usuarios.
+-[ ] Crear usuarios y quitar accesos.
+-[ ] No existen esas instrucciones.
+
+?[¿Que es una transaccion?]
+-[ ] Un query de tipo INSERT, UPDATE o DELETE.
+-[x] Una o más sentencias SQLs.
+
+?[Proporciona una serie de restricciones de integridad, reglas que se aplican a la base de datos para restringir los valores que se pueden colocar en las tablas.]
+-[x] Constraints.
+-[ ] Vistas.
+-[ ] Triggers.
+-[ ] Procedimientos.
+
+?[Tipo de Objeto que al ser invocado realiza una acción, pero nunca puede ser invocado manualmente.]
+-[ ] Constraints.
+-[ ] Vistas.
+-[x] Triggers.
+-[ ] Procedimientos.
 
 :::
