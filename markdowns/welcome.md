@@ -471,4 +471,39 @@ UPDATE Menu
 SET Activo = 5;
 ```
 :::
+
+::: DELETES
+Eliminación de todos los registros de la tabla Historial_Conexion.
+<span style="color:red">*</span> Es muy importante ser cuidados al momento de ejecutar un query <span style="color:red">DELETE</span> para no eliminar registros que no se debian eliminar.
+```sql
+DELETE 
+FROM Historial_Conexion;
+```
+
+Eliminación de todos los registros de la tabla _Historial_Conexion_.
+<span style="color:red">*</span> Es muy importante ser cuidados al momento de ejecutar un query <span style="color:red">DELETE</span> para no eliminar registros que no se debian eliminar.
+<span style="color:blue">WHERE 1 = 1</span> es equivalente a que no haya ninguna condición.
+```sql
+DELETE 
+FROM Historial_Conexion;
+
+DELETE 
+FROM Historial_Conexion
+WHERE 1 = 1;
+```
+
+<span style="color:blue">TRUNCATE TABLE</span> Borra todos los datos de una tabla, es parecido a ejecutar un <span style="color:blue">DROP TABLE</span> seguido de un <span style="color:blue">CREATE TABLE</span>.
++ El <span style="color:blue">DELETE</span> borrar las filas una por una, <span style="color:blue">TRUNCATE TABLE</span> borra todas las filas de un solo, por lo que es mas rapido.
+```sql
+TRUNCATE TABLE Historial_Conexion;
+```
+
+Eliminación de varios registros de la tabla _Menu_.
+```sql
+DELETE 
+FROM Menu
+WHERE ID >= 7
+AND ID <= 8;
+```
+:::
 :::
