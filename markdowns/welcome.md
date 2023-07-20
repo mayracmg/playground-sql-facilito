@@ -626,3 +626,18 @@ AND ID <= 8;
 -[ ] TRUNCATE Menu;
 -[x] TRUNCATE TABLE Menu;
 :::
+
+::: Tarea
+
+## Crear los scripts necesarios y ejecutarlos para obtener la estructura del siguiente diagrama ER.
+![ER](https://raw.githubusercontent.com/mayracmg/playground-sql-facilito/master/markdowns/Nuevo_ER.png)
+
+## Generar los queries para los siguienes enunciados.
+
+1. Crear un procedimiento para la creacion de usuarios, el cual reciba los parametros necesarios para crear el usuario, crear cuentas vinculadas y asignarle un tipo de usuario en el mismo procedimiento.
+2. Crear una función que retorne el campo Nombre de la tabla tipo usuario, y que reciba como parametro el ID del tipo de usuario. Luego seleccionar todos los usuarios activos e incluir el resultado de la función creada.
+3. Crear un trigger en la tabla Historial_Conexion al querer eliminar datos, que valide si el historial a borrar es de cualquier dia anterior a hoy, que no permita borrar, es decir que solo permita borrar historial de conexion del dia actual.
+4. Mostrar todas las opciones de Menu Activas ordenadas alfabeticamente.
+5. Insertar datos en las nuevas tablas creadas.
+
+:::
