@@ -647,6 +647,9 @@ AND ID <= 8;
 :::
 
 ::: Clase 3
+1. Descargar la base de datos de ejemplo: [Descargar](https://www.mysqltutorial.org/wp-content/uploads/2018/03/mysqlsampledatabase.zip)
+2. Copiar, pegar y ejecutar los queries en MySQL.
+
 ::: Cláusula WHERE
 Define una condición (o varias) que debe cumplirse para que los datos sean devueltos.
 Los operadores utilizados en la cláusula WHERE (o cualquier condición definida en la cláusula) no tienen efecto en los datos almacenados en las tablas. 
@@ -654,20 +657,77 @@ Sólo afectan a los datos devueltos cuando se invoca la vista.
 Se puede incluir en una instrucción <span style="color:blue">SELECT</span>, <span style="color:blue">UPDATE</span> o <span style="color:blue">DELETE</span>.
 
 ## Operadores de Comparación
-+ Típicos (=, !=, <, <=, >, >=)
-+ AND: Para unir dos condiciones, ambas deben ser verdaderas.
-+ OR: Para unir dos condiciones, una condición debe ser verdadera.
-+ IS NULL: Para obtener las filas donde X columna tiene valor null.
-+ BETWEEN: para identificar un rango de valores.
-+ NOT: Para negar una condición.
-+ LIKE: es posible especificar valores que son solamente similares a los valores almacenados.
-* Signo de porcentaje (%): representa cero o más caracteres desconocidos.
-* Guión bajo (_): representa exactamente un carácter desconocido.
-+ IN: permite determinar si los valores en la columna especificada de una tabla están contenidos en una lista definida o contenidos dentro de otra tabla.
-+ EXISTS: Está dedicado únicamente a determinar si la subconsulta arroja alguna fila o no.
++ **Típicos** (=, !=, <, <=, >, >=)
++ **AND**: Para unir dos condiciones, ambas deben ser verdaderas.
++ **OR**: Para unir dos condiciones, una condición debe ser verdadera.
++ **IS NULL**: Para obtener las filas donde X columna tiene valor null.
++ **BETWEEN**: para identificar un rango de valores.
++ **NOT**: Para negar una condición.
++ **LIKE**: es posible especificar valores que son solamente similares a los valores almacenados.
+    - Signo de porcentaje (%): representa cero o más caracteres desconocidos.
+    - Guión bajo (_): representa exactamente un carácter desconocido.
++ **IN**: permite determinar si los valores en la columna especificada de una tabla están contenidos en una lista definida o contenidos dentro de otra tabla.
++ **EXISTS**: Está dedicado únicamente a determinar si la subconsulta arroja alguna fila o no.
+
+```sql
+SELECT CustomerNumber 
+FROM customers
+WHERE customerNumber BETWEEN 100 AND 500
+AND (customerName LIKE 'A%'
+    OR customerName LIKE '_A%')
+AND addressLine1 IS NOT NULL
+AND addressLine2 IS NULL
+AND creditLimit > 0
+AND postalCode IN ('44000', '75012');
+```
 :::
 
 ::: Funciones de Agregación
+Realizan operaciones sobre un grupo o un set de datos.
+Comúnmente son utilizadas con la cláusula <span style="color:blue">GROUP BY</span> para generar grupos y resultados sobre esos grupos.
+
+## Algunas funciones comunes
+
++ **AVG**: Para promediar valores
++ **COUNT**: Para contar registros
++ **COUNT(DISTINCT)**: Para contar registros unicos.
++ **MAX**: Devuelve el valor máximo.
++ **MIN**: Devuelve el valor mínimo.
++ **SUM**: Para sumar valores.
++ **STD**: Devuelve la desviación estándar.
++ **JSON_ARRAYAGG()**: Agrupa un set de datos en un JSON array.
++ **JSON_OBJECTAGG()**: Una fila de datos es retornada en formato JSON.
+
+Ejemplos
+
+1. Seleccionamos el total de registros en la tabla Usuario, para obtener otra métrica, solo cambiamos el COUNT por la función que necesitemos.
+```sql
+SELECT COUNT(*)
+FROM customers;
+```
+2. Seleccionamos el total de registros en la tabla Usuario, pero en lugar de un total general, es el total agrupado por el campo Activo.
+```sql
+SELECT country, COUNT(*)
+FROM customers
+GROUP BY country;
+```
+
+## GROUP BY
+Es posible utilizar más de una función de agregación en un mismo query.
+Todos los campos individuales que están junto a la función de agregación en la clausula <span style="color:blue">SELECT</span> debe ir tambien en la clausula <span style="color:blue">GROUP BY</span>.
+```sql
+SELECT country, COUNT(*)
+FROM customers
+GROUP BY country;
+```
+
+## Identificar duplicados con COUNT
+La función COUNT puede ser utilizada para contar duplicados.
+```sql
+SELECT country, COUNT(*)
+FROM customers
+GROUP BY country;
+```
 :::
 
 ::: Common Table Expressions
