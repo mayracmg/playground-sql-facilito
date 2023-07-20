@@ -647,4 +647,36 @@ AND ID <= 8;
 :::
 
 ::: Clase 3
+::: Cláusula WHERE
+Define una condición (o varias) que debe cumplirse para que los datos sean devueltos.
+Los operadores utilizados en la cláusula WHERE (o cualquier condición definida en la cláusula) no tienen efecto en los datos almacenados en las tablas. 
+Sólo afectan a los datos devueltos cuando se invoca la vista.
+Se puede incluir en una instrucción <span style="color:blue">SELECT</span>, <span style="color:blue">UPDATE</span> o <span style="color:blue">DELETE</span>.
+
+## Operadores de Comparación
++ Típicos (=, !=, <, <=, >, >=)
++ AND: Para unir dos condiciones, ambas deben ser verdaderas.
++ OR: Para unir dos condiciones, una condición debe ser verdadera.
++ IS NULL: Para obtener las filas donde X columna tiene valor null.
++ BETWEEN: para identificar un rango de valores.
++ NOT: Para negar una condición.
++ LIKE: es posible especificar valores que son solamente similares a los valores almacenados.
+* Signo de porcentaje (%): representa cero o más caracteres desconocidos.
+* Guión bajo (_): representa exactamente un carácter desconocido.
++ IN: permite determinar si los valores en la columna especificada de una tabla están contenidos en una lista definida o contenidos dentro de otra tabla.
++ EXISTS: Está dedicado únicamente a determinar si la subconsulta arroja alguna fila o no.
+:::
+
+::: Funciones de Agregación
+:::
+
+::: Common Table Expressions
+:::
+
+::: Joins
+:::
+
+::: Window Functions
+:::
+
 :::
