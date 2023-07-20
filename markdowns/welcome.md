@@ -1,4 +1,5 @@
 # SQL Facilito
+::: Clase 1
 
 En esta sección encontrarás ejemplos de consultas SQL, clasificas en los 3 tipos que existen, DDL, DCL y DML.
 Los queries estan preparados para funcionar en una base de datos **MySQL**, puedes copiar los queries y ejecutarlos en tu propia base de datos.
@@ -639,5 +640,11 @@ AND ID <= 8;
 3. Crear un trigger en la tabla Historial_Conexion al querer eliminar datos, que valide si el historial a borrar es de cualquier dia anterior a hoy, que no permita borrar, es decir que solo permita borrar historial de conexion del dia actual.
 4. Mostrar todas las opciones de Menu Activas ordenadas alfabeticamente.
 5. Insertar datos en las nuevas tablas creadas.
+:::
+:::
 
+::: Clase 2
+:::
+
+::: Clase 3
 :::
