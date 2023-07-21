@@ -749,9 +749,58 @@ AND creditLimit > 0
 GROUP BY country, state, city
 HAVING MIN(creditLimit) >= 100000;
 ```
+
+# ORDER BY
+Toma la salida de la cláusula <span style="color:blue">SELECT</span> y ordena los resultados de la consulta de acuerdo con las especificaciones dentro de la cláusula <span style="color:blue">ORDER BY</span>.
+Se especifica una o más columnas y las palabras clave opcionales <span style="color:blue">ASC</span> o <span style="color:blue">DESC</span> (una por columna). Si no se especifica la palabra clave, setoma <span style="color:blue">ASC</span>.
++ **ASC**: Orden ascendente
++ **DESC**: Orden descendente.
+
+```sql
+SELECT country, state, city, AVG(salesRepEmployeeNumber), MIN(creditLimit)
+FROM customers
+WHERE customerNumber BETWEEN 100 AND 500
+AND creditLimit > 0
+GROUP BY country, state, city
+HAVING MIN(creditLimit) >= 100000
+ORDER BY country, state DESC, city;
+```
 :::
 
 ::: Common Table Expressions
+Es un conjunto de resultados con nombre temporal al que puede hacer referencia dentro de una instrucción <span style="color:blue">SELECT</span>, <span style="color:blue">INSERT</span>, <span style="color:blue">UPDATE</span> o <span style="color:blue">DELETE</span>. El CTE también se la puede usar en una vista.
+
+**Sintaxis**:
+
+<span style="color:blue">WITH</span> + alias + <span style="color:blue">AS</span> + (QUERY CTE)
+Query que hace referencia al CTE
+
+```sql
+WITH UK_Customers AS (
+  SELECT customerNumber 
+  FROM customers
+  WHERE country = 'UK'
+)
+SELECT *
+FROM orders O
+INNER JOIN UK_Customers C ON C.customerNumber = O.customerNumber;
+
+WITH CTE AS (
+  SELECT CustomerNumber 
+  FROM customers
+  WHERE customerNumber BETWEEN 100 AND 500
+  AND (customerName LIKE 'A%'
+    OR customerName LIKE '_A%')
+  AND addressLine1 IS NOT NULL
+  AND addressLine2 IS NULL
+  AND creditLimit > 0
+  AND postalCode IN ('44000', '75012')
+)
+UPDATE customers
+INNER JOIN CTE C 
+  ON C.CustomerNumber = customers.CustomerNumber
+SET customers.creditLimit = 17.19;
+```
 :::
 
 ::: Joins
