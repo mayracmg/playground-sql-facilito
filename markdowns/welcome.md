@@ -716,17 +716,38 @@ GROUP BY country;
 Es posible utilizar más de una función de agregación en un mismo query.
 Todos los campos individuales que están junto a la función de agregación en la clausula <span style="color:blue">SELECT</span> debe ir tambien en la clausula <span style="color:blue">GROUP BY</span>.
 ```sql
-SELECT country, COUNT(*)
+SELECT country, AVG(creditLimit), MIN(creditLimit), MAX(creditLimit)
 FROM customers
 GROUP BY country;
+
+SELECT country, state, city, AVG(creditLimit), MIN(creditLimit), MAX(creditLimit)
+FROM customers
+GROUP BY country, state, city;
 ```
 
 ## Identificar duplicados con COUNT
 La función COUNT puede ser utilizada para contar duplicados.
 ```sql
-SELECT country, COUNT(*)
+SELECT COUNT(firstName), COUNT(DISTINCT firstName)
+FROM employees;
+
+SELECT lastname, COUNT(firstName)
+FROM employees
+GROUP BY lastname
+HAVING count(firstName) > 1;
+```
+
+##  HAVING
+A diferencia de la cláusula <span style="color:blue">WHERE</span>, la cláusula <span style="color:blue">HAVING</span> se refiere a grupos, no a filas individuales.
+Se aplica a los resultados después de haberse agrupado (en la cláusula <span style="color:blue">GROUP BY</span>).
+Tiene la ventaja de permitir el uso de funciones establecidas tales como <span style="color:blue">AVG</span> o <span style="color:blue">SUM</span>, que no se pueden utilizar en la cláusula <span style="color:blue">WHERE</span> a menos que se coloquen dentro de una subconsulta.
+```sql
+SELECT country, state, city, AVG(salesRepEmployeeNumber), MIN(creditLimit)
 FROM customers
-GROUP BY country;
+WHERE customerNumber BETWEEN 100 AND 500
+AND creditLimit > 0
+GROUP BY country, state, city
+HAVING MIN(creditLimit) >= 100000;
 ```
 :::
 
