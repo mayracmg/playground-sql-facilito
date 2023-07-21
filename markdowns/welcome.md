@@ -682,6 +682,45 @@ AND postalCode IN ('44000', '75012');
 ```
 :::
 
+::: SubConsultas o SubQueries
+Proporcionan una forma de acceder a datos en múltiples tablas con una sola consulta. 
+Puede agregarse a una instrucción <span style="color:blue">SELECT</span>, <span style="color:blue">INSERT</span>, <span style="color:blue">UPDATE</span> o <span style="color:blue">DELETE</span> para permitir a esa instrucción utilizar los resultados de la consulta arrojados por la subconsulta. 
+La subconsulta es esencialmente una instrucción <span style="color:blue">SELECT</span> incrustada que actúa como una puerta de entrada a los datos en una segunda tabla. 
+
+Se pueden en dos categorías generales:
++ Las que pueden arrojar múltiples filas
++ Las que pueden arrojar solamente un valor
+
+Subconsulta que retorna múltiples filas.
+```sql
+SELECT * 
+FROM customers
+WHERE customerNumber BETWEEN 100 AND 500
+AND (customerName LIKE 'A%'
+    OR customerName LIKE '_A%')
+AND addressLine1 IS NOT NULL
+AND addressLine2 IS NULL
+AND customerNumber IN (
+	SELECT DISTINCT customerNumber
+	FROM orders 
+	WHERE orderDate >= '2005-01-01'
+);
+```
+
+Subconsultas que retornan solamente un valor.
+```sql
+SELECT * 
+FROM customers
+WHERE creditLimit > (
+	SELECT MAX(amount)
+	FROM payments
+);
+
+SELECT *, (SELECT MAX(amount) FROM payments) MaxPayment
+FROM customers;
+```
+:::
+
 ::: Funciones de Agregación
 Realizan operaciones sobre un grupo o un set de datos.
 Comúnmente son utilizadas con la cláusula <span style="color:blue">GROUP BY</span> para generar grupos y resultados sobre esos grupos.
