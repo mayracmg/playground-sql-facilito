@@ -908,8 +908,7 @@ RIGHT JOIN customers C ON C.customerNumber = O.customerNumber
 ### Ejemplo CROSS JOIN
 Leer todos los clientes y todas las ordenes.
 
-**A**: orders
-
+**A**: orders<br>
 **B**: customers
 ```sql
 SELECT C.customerNumber, C.customerName, O.orderNumber, O.orderDate
@@ -918,6 +917,14 @@ CROSS JOIN orders O;
 
 SELECT C.customerNumber, C.customerName, O.orderNumber, O.orderDate
 FROM customers C, orders O;
+```
+
+La combinación anterior excepto la intersección de la tabla _customers_ y _orders_.
+```sql
+SELECT C.customerNumber, C.customerName, O.orderNumber, O.orderDate
+FROM customers C
+CROSS JOIN orders O
+WHERE C.customerNumber != O.customerNumber;
 ```
 
 ### Ejemplo SELF JOIN
