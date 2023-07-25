@@ -749,8 +749,8 @@ FROM (
 ) Subquery;
 ```
 
-Una subconsulta tambien puede tener mas subconsultas, como una cadena. 
-<span style="color:blue">*</span> Al utilizar una varias subconsultas es importante ser cuidados ya que puede llegar a afectar significativamente el rendimiento del query.
+Una subconsulta tambien puede tener mas subconsultas, como una cadena. <br>
+**<span style="color:red">*</span>** Al utilizar una varias subconsultas es importante ser cuidados ya que puede llegar a afectar significativamente el rendimiento del query.
 ```sql
 SELECT *
 FROM (
