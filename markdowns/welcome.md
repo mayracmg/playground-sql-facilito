@@ -734,6 +734,31 @@ WHERE creditLimit > (
 SELECT *, (SELECT MAX(amount) FROM payments) MaxPayment
 FROM customers;
 ```
+
+El resultado de la subconsulta tambien puede ser utilizado como que fuera una tabla asignandole un alias y seleccionar datos de ese resultado.
+```sql
+SELECT *
+FROM (
+	SELECT customerNumber, CustomerName
+	FROM customers
+    WHERE customerNumber BETWEEN 100 AND 500
+	AND (customerName LIKE 'A%'
+		OR customerName LIKE '_A%')
+	AND addressLine1 IS NOT NULL
+	AND addressLine2 IS NULL
+) Subquery;
+```
+
+Una subconsulta tambien puede tener mas subconsultas, como una cadena. 
+<span style="color:blue">*</span> Al utilizar una varias subconsultas es importante ser cuidados ya que puede llegar a afectar significativamente el rendimiento del query.
+```sql
+SELECT *
+FROM (
+	SELECT customerNumber, CustomerName
+	FROM customers
+    WHERE creditlimit < (SELECT MAX(amount) FROM payments)
+) Subquery2;
+```
 :::
 
 ::: Funciones de Agregación
