@@ -857,6 +857,8 @@ En SQL podemos unir las tablas en una instrucción. Una operación join es una o
 
 ### Ejemplo INNER JOIN
 Leer los clientes que tienen ordenes, si un cliente no tiene ninguna orden, no estará en este resultado.
+**A**: customers
+**B**: orders
 ```sql
 SELECT C.customerNumber, C.customerName, O.orderNumber, O.orderDate
 FROM customers C
@@ -865,18 +867,35 @@ INNER JOIN orders O ON C.customerNumber = O.customerNumber;
 
 ### Ejemplo LEFT JOIN
 Leer todos los clientes, si los clientes tienen ordenes entonces aparecerán esos datos en el resultado, sino, apareceran como null.
+**A**: customers
+**B**: orders
 ```sql
 SELECT C.customerNumber, C.customerName, O.orderNumber, O.orderDate
 FROM customers C
 LEFT JOIN orders O ON C.customerNumber = O.customerNumber;
 ```
-
-### Ejemplo LEFT JOIN
 Leer todos los clientes, que no tienen ordenes.
 ```sql
 SELECT C.customerNumber, C.customerName, O.orderNumber, O.orderDate
 FROM customers C
 LEFT JOIN orders O ON C.customerNumber = O.customerNumber 
+	AND O.orderNumber IS NULL;
+```
+
+### Ejemplo RIGTH JOIN
+Leer todos los clientes, si los clientes tienen ordenes entonces aparecerán esos datos en el resultado, sino, apareceran como null.
+**A**: orders 
+**B**: customers
+```sql
+SELECT C.customerNumber, C.customerName, O.orderNumber, O.orderDate
+FROM orders O
+RIGHT JOIN customers C ON C.customerNumber = O.customerNumber;
+```
+Leer todos los clientes, que no tienen ordenes.
+```sql
+SELECT C.customerNumber, C.customerName, O.orderNumber, O.orderDate
+FROM orders O
+RIGHT JOIN customers C ON C.customerNumber = O.customerNumber
 	AND O.orderNumber IS NULL;
 ```
 :::
