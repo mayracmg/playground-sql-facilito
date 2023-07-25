@@ -754,9 +754,12 @@ Una subconsulta tambien puede tener mas subconsultas, como una cadena. <br>
 ```sql
 SELECT *
 FROM (
-	SELECT customerNumber, CustomerName
-	FROM customers
-    WHERE creditlimit < (SELECT MAX(amount) FROM payments)
+    SELECT customerNumber, CustomerName
+    FROM customers
+    WHERE creditlimit < (
+        SELECT MAX(amount) 
+        FROM payments
+    )
 ) Subquery2;
 ```
 :::
