@@ -843,6 +843,42 @@ SET customers.creditLimit = 17.19;
 :::
 
 ::: Joins
+Un componente importante de cualquier base de datos relacional es la correlación que puede existir entre dos tablas cualesquiera. 
+En SQL podemos unir las tablas en una instrucción. Una operación join es una operación que hace coincidir las filas en una tabla con las filas de manera tal que las columnas de ambas tablas puedan ser colocadas lado a lado en los resultados de la consulta como si éstos vinieran de una sola tabla.
+
+## Tipos de joins
+[Joins](https://ingenieriadesoftware.es/wp-content/uploads/2018/07/sqljoin.jpeg)
+
++ INNER JOIN: Devuelve registros que tienen valores coincidentes en ambas tablas
++ LEFT JOIN: Devuelve todos los registros de la tabla de la izquierda y los registros coincidentes de la tabla de la derecha.
++ RIGHT JOIN: Devuelve todos los registros de la tabla de la derecha y los registros coincidentes de la tabla de la izquierda.
++ CROSS JOIN (OUTER JOIN o FULL OUTER JOIN): Devuelve todos los registros de ambas tablas.
++ SELF JOIN: Aplica las reglas de los joins anteriores, solo que se realiza con la misma tabla.
+
+### Ejemplo INNER JOIN
+Leer los clientes que tienen ordenes, si un cliente no tiene ninguna orden, no estará en este resultado.
+```sql
+SELECT C.customerNumber, C.customerName, O.orderNumber, O.orderDate
+FROM customers C
+INNER JOIN orders O ON C.customerNumber = O.customerNumber;
+```
+
+### Ejemplo LEFT JOIN
+Leer todos los clientes, si los clientes tienen ordenes entonces aparecerán esos datos en el resultado, sino, apareceran como null.
+```sql
+SELECT C.customerNumber, C.customerName, O.orderNumber, O.orderDate
+FROM customers C
+LEFT JOIN orders O ON C.customerNumber = O.customerNumber;
+```
+
+### Ejemplo LEFT JOIN
+Leer todos los clientes, que no tienen ordenes.
+```sql
+SELECT C.customerNumber, C.customerName, O.orderNumber, O.orderDate
+FROM customers C
+LEFT JOIN orders O ON C.customerNumber = O.customerNumber 
+	AND O.orderNumber IS NULL;
+```
 :::
 
 ::: Window Functions
