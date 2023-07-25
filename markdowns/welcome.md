@@ -852,14 +852,14 @@ En SQL podemos unir las tablas en una instrucción. Una operación join es una o
 + <span style="color:blue">INNER JOIN</span>: Devuelve registros que tienen valores coincidentes en ambas tablas
 + <span style="color:blue">LEFT JOIN</span>: Devuelve todos los registros de la tabla de la izquierda y los registros coincidentes de la tabla de la derecha.
 + <span style="color:blue">RIGHT JOIN</span>: Devuelve todos los registros de la tabla de la derecha y los registros coincidentes de la tabla de la izquierda.
-+ <span style="color:blue">CROSS JOIN</span> (OUTER JOIN o FULL OUTER JOIN): Devuelve todos los registros de ambas tablas.
++ <span style="color:blue">CROSS JOIN</span> (OUTER JOIN o FULL OUTER JOIN): Combina todas las filas de la tabla A con todas las filas de la tabla B.
 + <span style="color:purple">SELF JOIN</span>: Aplica las reglas de los joins anteriores, solo que se realiza con la misma tabla.
-+ <span style="color:purple">Producto Cartesiano</span>: Combina todas las filas de la tabla A con todas las filas de la tabla B.
 
 ### Ejemplo INNER JOIN
 Leer los clientes que tienen ordenes, si un cliente no tiene ninguna orden, no estará en este resultado.
 
 **A**: customers
+
 **B**: orders
 ```sql
 SELECT C.customerNumber, C.customerName, O.orderNumber, O.orderDate
@@ -871,6 +871,7 @@ INNER JOIN orders O ON C.customerNumber = O.customerNumber;
 Leer todos los clientes, si los clientes tienen ordenes entonces aparecerán esos datos en el resultado, sino, apareceran como null.
 
 **A**: customers
+
 **B**: orders
 ```sql
 SELECT C.customerNumber, C.customerName, O.orderNumber, O.orderDate
@@ -888,7 +889,8 @@ LEFT JOIN orders O ON C.customerNumber = O.customerNumber
 ### Ejemplo RIGTH JOIN
 Leer todos los clientes, si los clientes tienen ordenes entonces aparecerán esos datos en el resultado, sino, apareceran como null.
 
-**A**: orders 
+**A**: orders
+
 **B**: customers
 ```sql
 SELECT C.customerNumber, C.customerName, O.orderNumber, O.orderDate
@@ -906,12 +908,30 @@ RIGHT JOIN customers C ON C.customerNumber = O.customerNumber
 ### Ejemplo CROSS JOIN
 Leer todos los clientes y todas las ordenes.
 
-**A**: orders 
+**A**: orders
+
 **B**: customers
 ```sql
 SELECT C.customerNumber, C.customerName, O.orderNumber, O.orderDate
-FROM orders O
-CROSS JOIN customers C ON C.customerNumber = O.customerNumber;
+FROM customers C
+CROSS JOIN orders O;
+
+SELECT C.customerNumber, C.customerName, O.orderNumber, O.orderDate
+FROM customers C, orders O;
+```
+
+### Ejemplo SELF JOIN
+Leer todas las ordenes y muestra el id de otra orden para para el mismo cliente y misma fecha.
+
+**A**: orders
+
+**B**: customers
+```sql
+SELECT A.customerNumber, A.orderNumber, A.orderDate, B.orderNumber
+FROM orders A
+LEFT JOIN orders B ON A.customerNumber = B.customerNumber
+	AND A.orderDate = B.orderDate
+	AND A.orderNumber != B.orderNumber;
 ```
 :::
 
