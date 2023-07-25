@@ -847,7 +847,7 @@ Un componente importante de cualquier base de datos relacional es la correlació
 En SQL podemos unir las tablas en una instrucción. Una operación join es una operación que hace coincidir las filas en una tabla con las filas de manera tal que las columnas de ambas tablas puedan ser colocadas lado a lado en los resultados de la consulta como si éstos vinieran de una sola tabla.
 
 ## Tipos de joins
-[Joins](https://ingenieriadesoftware.es/wp-content/uploads/2018/07/sqljoin.jpeg)
+![Joins](https://ingenieriadesoftware.es/wp-content/uploads/2018/07/sqljoin.jpeg)
 
 + INNER JOIN: Devuelve registros que tienen valores coincidentes en ambas tablas
 + LEFT JOIN: Devuelve todos los registros de la tabla de la izquierda y los registros coincidentes de la tabla de la derecha.
