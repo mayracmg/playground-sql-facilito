@@ -650,6 +650,9 @@ AND ID <= 8;
 1. Descargar la base de datos de ejemplo: [Descargar](https://www.mysqltutorial.org/wp-content/uploads/2018/03/mysqlsampledatabase.zip)
 2. Copiar, pegar y ejecutar los queries en MySQL.
 
+### Diagrama ER de la BD descargada.
+![ER](https://raw.githubusercontent.com/mayracmg/playground-sql-facilito/master/markdowns/ER2.png)
+
 ::: Cláusula WHERE
 Define una condición (o varias) que debe cumplirse para que los datos sean devueltos.
 Los operadores utilizados en la cláusula WHERE (o cualquier condición definida en la cláusula) no tienen efecto en los datos almacenados en las tablas. 
@@ -938,6 +941,17 @@ LEFT JOIN orders B ON A.customerNumber = B.customerNumber
 ```
 ---
 ## Joins con tablas intermediarias
+Para obtener la lista de clientes y los productos que ha comprado cada cliente no existe una relación directa entre la tabla _customers_ y _products_ por lo que es necesario hacer los joins con tablas segun el diagrama ER muestra las llaves foraneas (como una cascada) hasta lograr llegar a la tabla de productos.
+
+![ER](https://raw.githubusercontent.com/mayracmg/playground-sql-facilito/master/markdowns/JoinsCascada.png)
+
+```sql
+SELECT C.customerNumber, C.customerName, P.productCode, P.productName
+FROM customers C
+INNER JOIN orders O ON C.customerNumber = O.customerNumber
+INNER JOIN orderdetails D ON D.orderNumber = O.orderNumber
+INNER JOIN products P ON P.productCode = D.productCode;
+```
 :::
 
 ::: Window Functions
