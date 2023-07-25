@@ -853,8 +853,8 @@ En SQL podemos unir las tablas en una instrucción. Una operación join es una o
 + <span style="color:blue">LEFT JOIN</span>: Devuelve todos los registros de la tabla de la izquierda y los registros coincidentes de la tabla de la derecha.
 + <span style="color:blue">RIGHT JOIN</span>: Devuelve todos los registros de la tabla de la derecha y los registros coincidentes de la tabla de la izquierda.
 + <span style="color:blue">CROSS JOIN</span> (OUTER JOIN o FULL OUTER JOIN): Devuelve todos los registros de ambas tablas.
-+ <span style="color:blue">SELF JOIN</span>: Aplica las reglas de los joins anteriores, solo que se realiza con la misma tabla.
-+ <span style="color:blue">Producto Cartesiano</span>: Combina todas las filas de la tabla A con todas las filas de la tabla B.
++ <span style="color:purple">SELF JOIN</span>: Aplica las reglas de los joins anteriores, solo que se realiza con la misma tabla.
++ <span style="color:purple">Producto Cartesiano</span>: Combina todas las filas de la tabla A con todas las filas de la tabla B.
 
 ### Ejemplo INNER JOIN
 Leer los clientes que tienen ordenes, si un cliente no tiene ninguna orden, no estará en este resultado.
