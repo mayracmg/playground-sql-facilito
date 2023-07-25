@@ -659,7 +659,7 @@ Los operadores utilizados en la cláusula WHERE (o cualquier condición definida
 Sólo afectan a los datos devueltos cuando se invoca la vista.
 Se puede incluir en una instrucción <span style="color:blue">SELECT</span>, <span style="color:blue">UPDATE</span> o <span style="color:blue">DELETE</span>.
 
-::: Ejemplo
+::: Ejemplo lógica del where
 ![ER](https://raw.githubusercontent.com/mayracmg/playground-sql-facilito/master/markdowns/EjemploDatos1.png)
 ![ER](https://raw.githubusercontent.com/mayracmg/playground-sql-facilito/master/markdowns/EjemploDatos2.png)
 :::
