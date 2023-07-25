@@ -849,15 +849,18 @@ En SQL podemos unir las tablas en una instrucción. Una operación join es una o
 ## Tipos de joins
 ![Joins](https://ingenieriadesoftware.es/wp-content/uploads/2018/07/sqljoin.jpeg)
 
-+ INNER JOIN: Devuelve registros que tienen valores coincidentes en ambas tablas
-+ LEFT JOIN: Devuelve todos los registros de la tabla de la izquierda y los registros coincidentes de la tabla de la derecha.
-+ RIGHT JOIN: Devuelve todos los registros de la tabla de la derecha y los registros coincidentes de la tabla de la izquierda.
-+ CROSS JOIN (OUTER JOIN o FULL OUTER JOIN): Devuelve todos los registros de ambas tablas.
-+ SELF JOIN: Aplica las reglas de los joins anteriores, solo que se realiza con la misma tabla.
++ <span style="color:blue">INNER JOIN</span>: Devuelve registros que tienen valores coincidentes en ambas tablas
++ <span style="color:blue">LEFT JOIN</span>: Devuelve todos los registros de la tabla de la izquierda y los registros coincidentes de la tabla de la derecha.
++ <span style="color:blue">RIGHT JOIN</span>: Devuelve todos los registros de la tabla de la derecha y los registros coincidentes de la tabla de la izquierda.
++ <span style="color:blue">CROSS JOIN</span> (OUTER JOIN o FULL OUTER JOIN): Devuelve todos los registros de ambas tablas.
++ <span style="color:blue">SELF JOIN</span>: Aplica las reglas de los joins anteriores, solo que se realiza con la misma tabla.
++ <span style="color:blue">Producto Cartesiano</span>: Combina todas las filas de la tabla A con todas las filas de la tabla B.
 
 ### Ejemplo INNER JOIN
 Leer los clientes que tienen ordenes, si un cliente no tiene ninguna orden, no estará en este resultado.
+
 **A**: customers
+
 **B**: orders
 ```sql
 SELECT C.customerNumber, C.customerName, O.orderNumber, O.orderDate
@@ -867,7 +870,9 @@ INNER JOIN orders O ON C.customerNumber = O.customerNumber;
 
 ### Ejemplo LEFT JOIN
 Leer todos los clientes, si los clientes tienen ordenes entonces aparecerán esos datos en el resultado, sino, apareceran como null.
+
 **A**: customers
+
 **B**: orders
 ```sql
 SELECT C.customerNumber, C.customerName, O.orderNumber, O.orderDate
@@ -884,7 +889,9 @@ LEFT JOIN orders O ON C.customerNumber = O.customerNumber
 
 ### Ejemplo RIGTH JOIN
 Leer todos los clientes, si los clientes tienen ordenes entonces aparecerán esos datos en el resultado, sino, apareceran como null.
+
 **A**: orders 
+
 **B**: customers
 ```sql
 SELECT C.customerNumber, C.customerName, O.orderNumber, O.orderDate
@@ -897,6 +904,18 @@ SELECT C.customerNumber, C.customerName, O.orderNumber, O.orderDate
 FROM orders O
 RIGHT JOIN customers C ON C.customerNumber = O.customerNumber
 	AND O.orderNumber IS NULL;
+```
+
+### Ejemplo CROSS JOIN
+Leer todos los clientes, si los clientes tienen ordenes entonces aparecerán esos datos en el resultado, sino, apareceran como null.
+
+**A**: orders 
+
+**B**: customers
+```sql
+SELECT C.customerNumber, C.customerName, O.orderNumber, O.orderDate
+FROM orders O
+RIGHT JOIN customers C ON C.customerNumber = O.customerNumber;
 ```
 :::
 
