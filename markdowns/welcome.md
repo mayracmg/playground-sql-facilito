@@ -858,8 +858,7 @@ En SQL podemos unir las tablas en una instrucción. Una operación join es una o
 ### Ejemplo INNER JOIN
 Leer los clientes que tienen ordenes, si un cliente no tiene ninguna orden, no estará en este resultado.
 
-**A**: customers
-
+**A**: customers<br>
 **B**: orders
 ```sql
 SELECT C.customerNumber, C.customerName, O.orderNumber, O.orderDate
@@ -870,8 +869,7 @@ INNER JOIN orders O ON C.customerNumber = O.customerNumber;
 ### Ejemplo LEFT JOIN
 Leer todos los clientes, si los clientes tienen ordenes entonces aparecerán esos datos en el resultado, sino, apareceran como null.
 
-**A**: customers
-
+**A**: customers<br>
 **B**: orders
 ```sql
 SELECT C.customerNumber, C.customerName, O.orderNumber, O.orderDate
@@ -889,8 +887,7 @@ LEFT JOIN orders O ON C.customerNumber = O.customerNumber
 ### Ejemplo RIGTH JOIN
 Leer todos los clientes, si los clientes tienen ordenes entonces aparecerán esos datos en el resultado, sino, apareceran como null.
 
-**A**: orders
-
+**A**: orders<br>
 **B**: customers
 ```sql
 SELECT C.customerNumber, C.customerName, O.orderNumber, O.orderDate
@@ -930,9 +927,8 @@ WHERE C.customerNumber != O.customerNumber;
 ### Ejemplo SELF JOIN
 Leer todas las ordenes y muestra el id de otra orden para para el mismo cliente y misma fecha.
 
-**A**: orders
-
-**B**: customers
+**A**: orders<br>
+**B**: orders
 ```sql
 SELECT A.customerNumber, A.orderNumber, A.orderDate, B.orderNumber
 FROM orders A
@@ -940,6 +936,8 @@ LEFT JOIN orders B ON A.customerNumber = B.customerNumber
 	AND A.orderDate = B.orderDate
 	AND A.orderNumber != B.orderNumber;
 ```
+---
+## Joins con tablas intermediarias
 :::
 
 ::: Window Functions
