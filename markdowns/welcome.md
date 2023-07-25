@@ -659,6 +659,11 @@ Los operadores utilizados en la cláusula WHERE (o cualquier condición definida
 Sólo afectan a los datos devueltos cuando se invoca la vista.
 Se puede incluir en una instrucción <span style="color:blue">SELECT</span>, <span style="color:blue">UPDATE</span> o <span style="color:blue">DELETE</span>.
 
+::: Ejemplo
+![ER](https://raw.githubusercontent.com/mayracmg/playground-sql-facilito/master/markdowns/EjemploDatos1.png)
+![ER](https://raw.githubusercontent.com/mayracmg/playground-sql-facilito/master/markdowns/EjemploDatos2.png)
+:::
+
 ## Operadores de Comparación
 + **Típicos** (=, !=, <, <=, >, >=)
 + **AND**: Para unir dos condiciones, ambas deben ser verdaderas.
@@ -943,10 +948,8 @@ LEFT JOIN orders B ON A.customerNumber = B.customerNumber
 ## Joins con tablas intermediarias
 Para obtener la lista de clientes y los productos que ha comprado cada cliente no existe una relación directa entre la tabla _customers_ y _products_ por lo que es necesario hacer los joins con tablas segun el diagrama ER muestra las llaves foraneas (como una cascada) hasta lograr llegar a la tabla de productos.
 
-::: Imagenes
+::: Joins
 ![ER](https://raw.githubusercontent.com/mayracmg/playground-sql-facilito/master/markdowns/JoinsCascada.png)
-![ER](https://raw.githubusercontent.com/mayracmg/playground-sql-facilito/master/markdowns/EjemploDatos1.png)
-![ER](https://raw.githubusercontent.com/mayracmg/playground-sql-facilito/master/markdowns/EjemploDatos2.png)
 :::
 
 ```sql
