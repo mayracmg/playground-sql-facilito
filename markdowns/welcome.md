@@ -1006,6 +1006,17 @@ Es posible usar las funciones de agregación con las window functions a fin de o
 ( [ ALL ] expression ) OVER ( [ PARTITION BY partition_list ] [ ORDER BY order_list] )
 ```
 
+## Algunas funciones comunes
+
++ **FIRST_VALUE**: Para obtener el primer valor de un grupo.
++ **LAST_VALUE**: Para obtener el ultimo valor de un grupo.
++ **LAG**: Para obtener un valor de la fila anterior.
++ **LEAD**: ara obtener un valor de la fila siguiente.
++ **RANK**: Asigna un valor o un rank a cada fila segun la particion.
++ **ROW_NUMBER**: Obtiene el numero de fila, puede ser una numeracion general o reiniciar la numeracion por grupos o particiones.
+[Mas info window functiosn MySQL](https://dev.mysql.com/doc/refman/8.0/en/window-functions-usage.html)
+[Mas info de windows functions](https://www.sqlservertutorial.net/sql-server-window-functions/sql-server-first_value-function/)
+
 Query con una funcion de agregacion la cual devuelve el total de ordenes para cada cliente, pero no es posible listar los datos de esa orden.
 ```sql
 SELECT C.customerNumber, C.customerName, COUNT(O.orderNumber)
