@@ -997,6 +997,24 @@ INNER JOIN products P ON P.productCode = D.productCode;
 :::
 
 ::: Window Functions
+Una window function nos da visibilidad de información sobre un set de datos, desde cada fila podemos acceder a ese set de datos.
+A diferencia de las funciones de agregación que nos obliga a hacer agrupaciones, las window function no.
+Es posible usar las funciones de agregación con las window functions a fin de obtener calculos para cada fila sin realizar agrupaciones. 
+
+Query con una funcion de agregacion la cual devuelve el total de ordenes para cada cliente, pero no es posible listar los datos de esa orden.
+```sql
+SELECT C.customerNumber, C.customerName, COUNT(O.orderNumber)
+FROM customers C
+INNER JOIN orders O ON C.customerNumber = O.customerNumber
+GROUP BY C.customerNumber, C.customerName;
+```
+Query con una window function la cual devuelve el total de ordenes para cada cliente, pero si es posible listar los datos de esa orden.
+```sql
+SELECT C.customerNumber, C.customerName, O.orderNumber, O.orderDate,
+COUNT(O.orderNumber) OVER(partition by C.customerNumber) AS total_profit
+FROM customers C
+INNER JOIN orders O ON C.customerNumber = O.customerNumber;
+```
 :::
 
 :::
