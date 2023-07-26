@@ -845,7 +845,7 @@ WHERE customerNumber BETWEEN 100 AND 500
 AND creditLimit > 0
 GROUP BY country, state, city
 HAVING MIN(creditLimit) >= 100000
-ORDER BY country, state DESC, city;
+ORDER BY country, state DESC, city ASC, MIN(creditLimit);
 ```
 :::
 
