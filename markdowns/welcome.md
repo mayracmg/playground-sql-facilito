@@ -1001,6 +1001,11 @@ Una window function nos da visibilidad de información sobre un set de datos, de
 A diferencia de las funciones de agregación que nos obliga a hacer agrupaciones, las window function no.
 Es posible usar las funciones de agregación con las window functions a fin de obtener calculos para cada fila sin realizar agrupaciones. 
 
+**Sintaxis general**: 
+```sql
+( [ ALL ] expression ) OVER ( [ PARTITION BY partition_list ] [ ORDER BY order_list] )
+```
+
 Query con una funcion de agregacion la cual devuelve el total de ordenes para cada cliente, pero no es posible listar los datos de esa orden.
 ```sql
 SELECT C.customerNumber, C.customerName, COUNT(O.orderNumber)
@@ -1008,12 +1013,23 @@ FROM customers C
 INNER JOIN orders O ON C.customerNumber = O.customerNumber
 GROUP BY C.customerNumber, C.customerName;
 ```
+
 Query con una window function la cual devuelve el total de ordenes para cada cliente, pero si es posible listar los datos de esa orden.
 ```sql
 SELECT C.customerNumber, C.customerName, O.orderNumber, O.orderDate,
-COUNT(O.orderNumber) OVER(partition by C.customerNumber) AS total_profit
+COUNT(O.orderNumber) OVER(PARTITION BY C.customerNumber) AS total_profit
 FROM customers C
 INNER JOIN orders O ON C.customerNumber = O.customerNumber;
+```
+
+Query con una window function para acceder a valores en otras filas. 
+Adicional a los datos de la fila actual muestra la fecha de la primera orden que realizo el cliente.
+```sql
+SELECT C.customerNumber, C.customerName, O.orderNumber, O.orderDate,
+FIRST_VALUE(O.orderDate) OVER(PARTITION BY C.customerNumber) AS firstOrderDate
+FROM customers C
+INNER JOIN orders O ON C.customerNumber = O.customerNumber
+
 ```
 :::
 
