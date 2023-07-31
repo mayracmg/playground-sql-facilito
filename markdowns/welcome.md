@@ -644,11 +644,18 @@ AND ID <= 8;
 :::
 
 ::: Clase 2
-Diseñar y normalizar la base de datos para el siguiente caso:
-CodigoFacilito y HackerRank decidieron hacer una alianza por lo que ahora en la página de HackerRank.com será posible ver en cada reto uno o varios links a cursos, clases o bootcamps donde se abarquen los conceptos para resolver el reto.
+**Diseñar y normalizar la base de datos para el siguiente caso:**<br>
+_CodigoFacilito_ y _HackerRank_ decidieron hacer una alianza por lo que ahora en la página de HackerRank.com será posible ver en cada reto uno o varios links a cursos, clases o bootcamps donde se abarquen los conceptos para resolver el reto.
 Por ejemplo: Un reto de SQL donde se pide hacer sumas y agrupaciones, podría tener links a un curso de SQL, a las clases especificas donde se abarcan funciones de agregación, selects y agrupaciones o al BootCamp de Backend con Python.
 
 HackerRank ya tiene la base de datos de su sistema actual, únicamente es necesario crear nuevas entidades y relaciones para crear la nueva funcionalidad.
+
+::: Pantallas de la funcionalidad deseada.
+
+:::
+
+Ver diagrama ER actual.
+Crear el diagrama Entidad Relación (Modelo Físico) de la nueva funcionalidad, generar el diccionario de datos y generar los scripts.
 
 :::
 
