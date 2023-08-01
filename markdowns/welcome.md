@@ -628,7 +628,7 @@ AND ID <= 8;
 -[x] TRUNCATE TABLE Menu;
 :::
 
-::: Tarea
+::: Practica Sugerida
 
 ## Crear los scripts necesarios y ejecutarlos para obtener la estructura del siguiente diagrama ER.
 ![ER](https://raw.githubusercontent.com/mayracmg/playground-sql-facilito/master/markdowns/Nuevo_ER.png)
@@ -660,14 +660,14 @@ HackerRank ya tiene la base de datos de su sistema actual, únicamente es necesa
 :::
 
 [ER Actual](https://raw.githubusercontent.com/mayracmg/playground-sql-facilito/master/markdowns/ER_HackerRank.png)
-[Script para crear ER](https://github.com/mayracmg/OtrosRetos/blob/be94a6b8ba081a985ea871429ee0294db10a2d2f/create_db_hackerrank.sql)
+[Script para crear ER](https://github.com/mayracmg/OtrosRetos/blob/b426f9b896031e838bf34ebb1f9e39225bbb3c92/create_db_hackerrank.sql)
 
 Crear el diagrama Entidad Relación (Modelo Físico) de la nueva funcionalidad, generar el diccionario de datos y generar los scripts.
 :::
 
-::: Tarea
-+ Crear los queries necesarios para obtener la información de cada nueva funcionalidad.
-+ Crear los queries necesarios para insertar, eliminar o modificar los datos de la nueva funcionalidad.
+::: Practica Sugerida
++ Crear los queries que considere necesarios para obtener la información de cada nueva funcionalidad.
++ Crear los queries que considere necesarios para insertar, eliminar o modificar los datos de la nueva funcionalidad.
 :::
 
 :::
