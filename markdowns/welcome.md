@@ -644,6 +644,8 @@ AND ID <= 8;
 :::
 
 ::: Clase 2
+
+::: Caso a resolver
 **Diseñar y normalizar la base de datos para el siguiente caso:**<br>
 _CodigoFacilito_ y _HackerRank_ decidieron hacer una alianza por lo que ahora en la página de HackerRank.com será posible ver en cada reto uno o varios links a cursos, clases o bootcamps donde se abarquen los conceptos para resolver el reto.
 Por ejemplo: Un reto de SQL donde se pide hacer sumas y agrupaciones, podría tener links a un curso de SQL, a las clases especificas donde se abarcan funciones de agregación, selects y agrupaciones o al BootCamp de Backend con Python.
@@ -651,13 +653,22 @@ Por ejemplo: Un reto de SQL donde se pide hacer sumas y agrupaciones, podría te
 HackerRank ya tiene la base de datos de su sistema actual, únicamente es necesario crear nuevas entidades y relaciones para crear la nueva funcionalidad.
 
 ::: Pantallas de la funcionalidad deseada.
-
+![Prototipo 1](https://raw.githubusercontent.com/mayracmg/playground-sql-facilito/master/markdowns/Prototipo1.png)
+![Prototipo 2](https://raw.githubusercontent.com/mayracmg/playground-sql-facilito/master/markdowns/Prototipo2.png)
+![Prototipo 3](https://raw.githubusercontent.com/mayracmg/playground-sql-facilito/master/markdowns/Prototipo3.png)
+![Prototipo 4](https://raw.githubusercontent.com/mayracmg/playground-sql-facilito/master/markdowns/Prototipo4.png)
 :::
 
-![ER Actual](https://raw.githubusercontent.com/mayracmg/playground-sql-facilito/master/markdowns/ER_HackerRank.png)
-![Script para crear ER](https://github.com/mayracmg/OtrosRetos/blob/be94a6b8ba081a985ea871429ee0294db10a2d2f/create_db_hackerrank.sql)
+[ER Actual](https://raw.githubusercontent.com/mayracmg/playground-sql-facilito/master/markdowns/ER_HackerRank.png)
+[Script para crear ER](https://github.com/mayracmg/OtrosRetos/blob/be94a6b8ba081a985ea871429ee0294db10a2d2f/create_db_hackerrank.sql)
 
 Crear el diagrama Entidad Relación (Modelo Físico) de la nueva funcionalidad, generar el diccionario de datos y generar los scripts.
+:::
+
+::: Tarea
++ Crear los queries necesarios para obtener la información de cada nueva funcionalidad.
++ Crear los queries necesarios para insertar, eliminar o modificar los datos de la nueva funcionalidad.
+:::
 
 :::
 
