@@ -640,7 +640,7 @@ AND ID <= 8;
 3. Crear un trigger en la tabla Historial_Conexion al querer eliminar datos, que valide si el historial a borrar es de cualquier dia anterior a hoy, que no permita borrar, es decir que solo permita borrar historial de conexion del dia actual.
 4. Mostrar todas las opciones de Menu Activas ordenadas alfabeticamente.
 5. Insertar datos en las nuevas tablas creadas.
+6. Resolver el reto (SQL Murder Mystery)[https://mystery.knightlab.com/]
 :::
 
-Resolver el reto (SQL Murder Mystery)[https://mystery.knightlab.com/]
 :::
