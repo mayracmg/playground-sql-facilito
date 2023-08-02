@@ -671,7 +671,13 @@ Crear el diagrama Entidad Relación (Modelo Físico) de la nueva funcionalidad, 
 1. Crear los queries que considere necesarios para obtener la información de cada nueva funcionalidad.
 2. Crear los queries que considere necesarios para insertar, eliminar o modificar los datos de la nueva funcionalidad.
 3. Caso: _CodigoFacilito_ y _HackerRank_ decidieron hacer una alianza por lo que ahora en la página de CodigoFacilito será posible ver en cada clase, curso o bootcamp uno o varios links a retos de HackerRank donde se apliquen los conceptos aprendidos en esa clase, curso o bootcamp. Por ejemplo: Una lección sobre SQL y joins podría tener links a retos de distintas dificultades donde se apliquen joins. Ver pantallas de ejemplo para guiarse de la nueva funcionalidad deseada. Diseñar y normalizar las tablas para las nuevas funcionalidades.
-[ER Actual](https://raw.githubusercontent.com/mayracmg/playground-sql-facilito/master/markdowns/ER_HackerRank.png)
+
+::: Pantallas de la funcionalidad deseada.
+![Prototipo 5](https://raw.githubusercontent.com/mayracmg/playground-sql-facilito/master/markdowns/Prototipo5.png)
+![Prototipo 6](https://raw.githubusercontent.com/mayracmg/playground-sql-facilito/master/markdowns/Prototipo6.png)
+![Prototipo 7](https://raw.githubusercontent.com/mayracmg/playground-sql-facilito/master/markdowns/Prototipo7.png)
+:::
+
 :::
 
 :::
