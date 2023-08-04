@@ -662,7 +662,7 @@ HackerRank ya tiene la base de datos de su sistema actual, únicamente es necesa
 :::
 
 [ER Actual](https://raw.githubusercontent.com/mayracmg/playground-sql-facilito/master/markdowns/ER_HackerRank.png)
-[Script para crear ER](https://github.com/mayracmg/OtrosRetos/blob/b426f9b896031e838bf34ebb1f9e39225bbb3c92/create_db_hackerrank.sql)
+[Script para crear ER](https://github.com/mayracmg/OtrosRetos/blob/2372397fa3f36c7f3b7579641d4c8d04bcf63329/create_db_hackerrank.sql)
 
 Crear el diagrama Entidad Relación (Modelo Físico) de la nueva funcionalidad, generar el diccionario de datos y generar los scripts.
 :::
