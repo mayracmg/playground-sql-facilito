@@ -679,3 +679,6 @@ Caso: _CodigoFacilito_ y _HackerRank_ decidieron hacer una alianza por lo que ah
 :::
 
 :::
+
+::: Clase 3
+:::
