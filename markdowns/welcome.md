@@ -719,15 +719,15 @@ Se puede incluir en una instrucción <span style="color:blue">SELECT</span>, <sp
 + **EXISTS**: Está dedicado únicamente a determinar si la subconsulta arroja alguna fila o no.
 
 ```sql
-SELECT CustomerNumber 
+SELECT CustomerNumber
 FROM customers
-WHERE customerNumber BETWEEN 100 AND 500
+WHERE customerNumber BETWEEN 121 AND 471
 AND (customerName LIKE 'A%'
     OR customerName LIKE '_A%')
 AND addressLine1 IS NOT NULL
 AND addressLine2 IS NULL
 AND creditLimit > 0
-AND postalCode IN ('44000', '75012');
+AND postalCode IN ('4110', '51247');
 ```
 :::
 
