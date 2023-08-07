@@ -681,4 +681,402 @@ Caso: _CodigoFacilito_ y _HackerRank_ decidieron hacer una alianza por lo que ah
 :::
 
 ::: Clase 3
+1. Descargar la base de datos de ejemplo: [Descargar](https://www.mysqltutorial.org/wp-content/uploads/2018/03/mysqlsampledatabase.zip)
+2. Copiar, pegar y ejecutar los queries en MySQL.
+
+### Diagrama ER de la BD descargada.
+![ER](https://raw.githubusercontent.com/mayracmg/playground-sql-facilito/master/markdowns/ER2.png)
+
+::: Cláusula WHERE
+Define una condición (o varias) que debe cumplirse para que los datos sean devueltos.
+Los operadores utilizados en la cláusula WHERE (o cualquier condición definida en la cláusula) no tienen efecto en los datos almacenados en las tablas. 
+Sólo afectan a los datos devueltos cuando se invoca la vista.
+Se puede incluir en una instrucción <span style="color:blue">SELECT</span>, <span style="color:blue">UPDATE</span> o <span style="color:blue">DELETE</span>.
+
+::: Datos
+![ER](https://raw.githubusercontent.com/mayracmg/playground-sql-facilito/master/markdowns/EjemploDatos1.png)
+:::
+
+::: Aplicar un filtro
+![ER](https://raw.githubusercontent.com/mayracmg/playground-sql-facilito/master/markdowns/EjemploDatos2.png)
+:::
+
+::: Aplicar otro filtro
+![ER](https://raw.githubusercontent.com/mayracmg/playground-sql-facilito/master/markdowns/EjemploDatos3.png)
+:::
+
+## Operadores de Comparación
++ **Típicos** (=, !=, <, <=, >, >=)
++ **AND**: Para unir dos condiciones, ambas deben ser verdaderas.
++ **OR**: Para unir dos condiciones, una condición debe ser verdadera.
++ **IS NULL**: Para obtener las filas donde X columna tiene valor null.
++ **BETWEEN**: para identificar un rango de valores.
++ **NOT**: Para negar una condición.
++ **LIKE**: es posible especificar valores que son solamente similares a los valores almacenados.
+    - Signo de porcentaje (%): representa cero o más caracteres desconocidos.
+    - Guión bajo (_): representa exactamente un carácter desconocido.
++ **IN**: permite determinar si los valores en la columna especificada de una tabla están contenidos en una lista definida o contenidos dentro de otra tabla.
++ **EXISTS**: Está dedicado únicamente a determinar si la subconsulta arroja alguna fila o no.
+
+```sql
+SELECT CustomerNumber 
+FROM customers
+WHERE customerNumber BETWEEN 100 AND 500
+AND (customerName LIKE 'A%'
+    OR customerName LIKE '_A%')
+AND addressLine1 IS NOT NULL
+AND addressLine2 IS NULL
+AND creditLimit > 0
+AND postalCode IN ('44000', '75012');
+```
+:::
+
+::: SubConsultas o SubQueries
+Proporcionan una forma de acceder a datos en múltiples tablas con una sola consulta. 
+Puede agregarse a una instrucción <span style="color:blue">SELECT</span>, <span style="color:blue">INSERT</span>, <span style="color:blue">UPDATE</span> o <span style="color:blue">DELETE</span> para permitir a esa instrucción utilizar los resultados de la consulta arrojados por la subconsulta. 
+La subconsulta es esencialmente una instrucción <span style="color:blue">SELECT</span> incrustada que actúa como una puerta de entrada a los datos en una segunda tabla. 
+
+Se pueden en dos categorías generales:
++ Las que pueden arrojar múltiples filas
++ Las que pueden arrojar solamente un valor
+
+Subconsulta que retorna múltiples filas.
+```sql
+SELECT * 
+FROM customers
+WHERE customerNumber BETWEEN 100 AND 500
+AND (customerName LIKE 'A%'
+    OR customerName LIKE '_A%')
+AND addressLine1 IS NOT NULL
+AND addressLine2 IS NULL
+AND customerNumber IN (
+	SELECT DISTINCT customerNumber
+	FROM orders 
+	WHERE orderDate >= '2005-01-01'
+);
+```
+
+Subconsultas que retornan solamente un valor.
+```sql
+SELECT * 
+FROM customers
+WHERE creditLimit > (
+	SELECT MAX(amount)
+	FROM payments
+);
+
+SELECT *, (SELECT MAX(amount) FROM payments) MaxPayment
+FROM customers;
+```
+
+El resultado de la subconsulta tambien puede ser utilizado como que fuera una tabla asignandole un alias y seleccionar datos de ese resultado.
+```sql
+SELECT *
+FROM (
+	SELECT customerNumber, CustomerName
+	FROM customers
+    WHERE customerNumber BETWEEN 100 AND 500
+	AND (customerName LIKE 'A%'
+		OR customerName LIKE '_A%')
+	AND addressLine1 IS NOT NULL
+	AND addressLine2 IS NULL
+) Subquery;
+```
+
+Una subconsulta tambien puede tener mas subconsultas, como una cadena. <br>
+**<span style="color:red">*</span>** Al utilizar una varias subconsultas es importante ser cuidados ya que puede llegar a afectar significativamente el rendimiento del query.
+```sql
+SELECT *
+FROM (
+    SELECT customerNumber, CustomerName
+    FROM customers
+    WHERE creditlimit < (
+        SELECT MAX(amount) 
+        FROM payments
+    )
+) Subquery2;
+```
+:::
+
+::: Funciones de Agregación
+Realizan operaciones sobre un grupo o un set de datos.
+Comúnmente son utilizadas con la cláusula <span style="color:blue">GROUP BY</span> para generar grupos y resultados sobre esos grupos.
+
+## Algunas funciones comunes
+
++ **AVG**: Para promediar valores
++ **COUNT**: Para contar registros
++ **COUNT(DISTINCT)**: Para contar registros unicos.
++ **MAX**: Devuelve el valor máximo.
++ **MIN**: Devuelve el valor mínimo.
++ **SUM**: Para sumar valores.
++ **STD**: Devuelve la desviación estándar.
++ **JSON_ARRAYAGG()**: Agrupa un set de datos en un JSON array.
++ **JSON_OBJECTAGG()**: Una fila de datos es retornada en formato JSON.
+
+Ejemplos
+
+1. Seleccionamos el total de registros en la tabla Usuario, para obtener otra métrica, solo cambiamos el COUNT por la función que necesitemos.
+```sql
+SELECT COUNT(*)
+FROM customers;
+```
+2. Seleccionamos el total de registros en la tabla Usuario, pero en lugar de un total general, es el total agrupado por el campo Activo.
+```sql
+SELECT country, COUNT(*)
+FROM customers
+GROUP BY country;
+```
+
+## GROUP BY
+Es posible utilizar más de una función de agregación en un mismo query.
+Todos los campos individuales que están junto a la función de agregación en la clausula <span style="color:blue">SELECT</span> debe ir tambien en la clausula <span style="color:blue">GROUP BY</span>.
+```sql
+SELECT country, AVG(creditLimit), MIN(creditLimit), MAX(creditLimit)
+FROM customers
+GROUP BY country;
+
+SELECT country, state, city, AVG(creditLimit), MIN(creditLimit), MAX(creditLimit)
+FROM customers
+GROUP BY country, state, city;
+```
+
+## Identificar duplicados con COUNT
+La función COUNT puede ser utilizada para contar duplicados.
+```sql
+SELECT COUNT(firstName), COUNT(DISTINCT firstName)
+FROM employees;
+
+SELECT lastname, COUNT(firstName)
+FROM employees
+GROUP BY lastname
+HAVING count(firstName) > 1;
+```
+
+##  HAVING
+A diferencia de la cláusula <span style="color:blue">WHERE</span>, la cláusula <span style="color:blue">HAVING</span> se refiere a grupos, no a filas individuales.
+Se aplica a los resultados después de haberse agrupado (en la cláusula <span style="color:blue">GROUP BY</span>).
+Tiene la ventaja de permitir el uso de funciones establecidas tales como <span style="color:blue">AVG</span> o <span style="color:blue">SUM</span>, que no se pueden utilizar en la cláusula <span style="color:blue">WHERE</span> a menos que se coloquen dentro de una subconsulta.
+```sql
+SELECT country, state, city, AVG(salesRepEmployeeNumber), MIN(creditLimit)
+FROM customers
+WHERE customerNumber BETWEEN 100 AND 500
+AND creditLimit > 0
+GROUP BY country, state, city
+HAVING MIN(creditLimit) >= 100000;
+```
+
+# ORDER BY
+Toma la salida de la cláusula <span style="color:blue">SELECT</span> y ordena los resultados de la consulta de acuerdo con las especificaciones dentro de la cláusula <span style="color:blue">ORDER BY</span>.
+Se especifica una o más columnas y las palabras clave opcionales <span style="color:blue">ASC</span> o <span style="color:blue">DESC</span> (una por columna). Si no se especifica la palabra clave, setoma <span style="color:blue">ASC</span>.
++ **ASC**: Orden ascendente
++ **DESC**: Orden descendente.
+
+```sql
+SELECT country, state, city, AVG(salesRepEmployeeNumber), MIN(creditLimit)
+FROM customers
+WHERE customerNumber BETWEEN 100 AND 500
+AND creditLimit > 0
+GROUP BY country, state, city
+HAVING MIN(creditLimit) >= 100000
+ORDER BY country, state DESC, city ASC, MIN(creditLimit);
+```
+:::
+
+::: Common Table Expressions
+Es un conjunto de resultados con nombre temporal al que puede hacer referencia dentro de una instrucción <span style="color:blue">SELECT</span>, <span style="color:blue">INSERT</span>, <span style="color:blue">UPDATE</span> o <span style="color:blue">DELETE</span>. El CTE también se la puede usar en una vista.
+
+**Sintaxis**:
+
+<span style="color:blue">WITH</span> + alias + <span style="color:blue">AS</span> + (QUERY CTE)
+Query que hace referencia al CTE
+
+```sql
+WITH UK_Customers AS (
+  SELECT customerNumber 
+  FROM customers
+  WHERE country = 'UK'
+)
+SELECT *
+FROM orders O
+INNER JOIN UK_Customers C ON C.customerNumber = O.customerNumber;
+
+WITH CTE AS (
+  SELECT CustomerNumber 
+  FROM customers
+  WHERE customerNumber BETWEEN 100 AND 500
+  AND (customerName LIKE 'A%'
+    OR customerName LIKE '_A%')
+  AND addressLine1 IS NOT NULL
+  AND addressLine2 IS NULL
+  AND creditLimit > 0
+  AND postalCode IN ('44000', '75012')
+)
+UPDATE customers
+INNER JOIN CTE C 
+  ON C.CustomerNumber = customers.CustomerNumber
+SET customers.creditLimit = 17.19;
+```
+:::
+
+::: Joins
+Un componente importante de cualquier base de datos relacional es la correlación que puede existir entre dos tablas cualesquiera. 
+En SQL podemos unir las tablas en una instrucción. Una operación join es una operación que hace coincidir las filas en una tabla con las filas de manera tal que las columnas de ambas tablas puedan ser colocadas lado a lado en los resultados de la consulta como si éstos vinieran de una sola tabla.
+
+## Tipos de joins
+![Joins](https://ingenieriadesoftware.es/wp-content/uploads/2018/07/sqljoin.jpeg)
+
++ <span style="color:blue">INNER JOIN</span>: Devuelve registros que tienen valores coincidentes en ambas tablas
++ <span style="color:blue">LEFT JOIN</span>: Devuelve todos los registros de la tabla de la izquierda y los registros coincidentes de la tabla de la derecha.
++ <span style="color:blue">RIGHT JOIN</span>: Devuelve todos los registros de la tabla de la derecha y los registros coincidentes de la tabla de la izquierda.
++ <span style="color:blue">CROSS JOIN</span> (OUTER JOIN o FULL OUTER JOIN): Combina todas las filas de la tabla A con todas las filas de la tabla B.
++ <span style="color:purple">SELF JOIN</span>: Aplica las reglas de los joins anteriores, solo que se realiza con la misma tabla.
+
+### Ejemplo INNER JOIN
+Leer los clientes que tienen ordenes, si un cliente no tiene ninguna orden, no estará en este resultado.
+
+**A**: customers<br>
+**B**: orders
+```sql
+SELECT C.customerNumber, C.customerName, O.orderNumber, O.orderDate
+FROM customers C
+INNER JOIN orders O ON C.customerNumber = O.customerNumber;
+```
+
+### Ejemplo LEFT JOIN
+Leer todos los clientes, si los clientes tienen ordenes entonces aparecerán esos datos en el resultado, sino, apareceran como null.
+
+**A**: customers<br>
+**B**: orders
+```sql
+SELECT C.customerNumber, C.customerName, O.orderNumber, O.orderDate
+FROM customers C
+LEFT JOIN orders O ON C.customerNumber = O.customerNumber;
+```
+Leer todos los clientes, que no tienen ordenes.
+```sql
+SELECT C.customerNumber, C.customerName, O.orderNumber, O.orderDate
+FROM customers C
+LEFT JOIN orders O ON C.customerNumber = O.customerNumber 
+	AND O.orderNumber IS NULL;
+```
+
+### Ejemplo RIGTH JOIN
+Leer todos los clientes, si los clientes tienen ordenes entonces aparecerán esos datos en el resultado, sino, apareceran como null.
+
+**A**: orders<br>
+**B**: customers
+```sql
+SELECT C.customerNumber, C.customerName, O.orderNumber, O.orderDate
+FROM orders O
+RIGHT JOIN customers C ON C.customerNumber = O.customerNumber;
+```
+Leer todos los clientes, que no tienen ordenes.
+```sql
+SELECT C.customerNumber, C.customerName, O.orderNumber, O.orderDate
+FROM orders O
+RIGHT JOIN customers C ON C.customerNumber = O.customerNumber
+	AND O.orderNumber IS NULL;
+```
+
+### Ejemplo CROSS JOIN
+Leer todos los clientes y todas las ordenes.
+
+**A**: orders<br>
+**B**: customers
+```sql
+SELECT C.customerNumber, C.customerName, O.orderNumber, O.orderDate
+FROM customers C
+CROSS JOIN orders O;
+
+SELECT C.customerNumber, C.customerName, O.orderNumber, O.orderDate
+FROM customers C, orders O;
+```
+
+La combinación anterior excepto la intersección de la tabla _customers_ y _orders_.
+```sql
+SELECT C.customerNumber, C.customerName, O.orderNumber, O.orderDate
+FROM customers C
+CROSS JOIN orders O
+WHERE C.customerNumber != O.customerNumber;
+```
+
+### Ejemplo SELF JOIN
+Leer todas las ordenes y muestra el id de otra orden para para el mismo cliente y misma fecha.
+
+**A**: orders<br>
+**B**: orders
+```sql
+SELECT A.customerNumber, A.orderNumber, A.orderDate, B.orderNumber
+FROM orders A
+LEFT JOIN orders B ON A.customerNumber = B.customerNumber
+	AND A.orderDate = B.orderDate
+	AND A.orderNumber != B.orderNumber;
+```
+---
+## Joins con tablas intermediarias
+Para obtener la lista de clientes y los productos que ha comprado cada cliente no existe una relación directa entre la tabla _customers_ y _products_ por lo que es necesario hacer los joins con tablas segun el diagrama ER muestra las llaves foraneas (como una cascada) hasta lograr llegar a la tabla de productos.
+
+::: Joins
+![ER](https://raw.githubusercontent.com/mayracmg/playground-sql-facilito/master/markdowns/JoinsCascada.png)
+:::
+
+```sql
+SELECT C.customerNumber, C.customerName, P.productCode, P.productName
+FROM customers C
+INNER JOIN orders O ON C.customerNumber = O.customerNumber
+INNER JOIN orderdetails D ON D.orderNumber = O.orderNumber
+INNER JOIN products P ON P.productCode = D.productCode;
+```
+:::
+
+::: Window Functions
+Una window function nos da visibilidad de información sobre un set de datos, desde cada fila podemos acceder a ese set de datos.
+A diferencia de las funciones de agregación que nos obliga a hacer agrupaciones, las window function no.
+Es posible usar las funciones de agregación con las window functions a fin de obtener calculos para cada fila sin realizar agrupaciones. 
+
+**Sintaxis general**: 
+```sql
+( [ ALL ] expression ) OVER ( [ PARTITION BY partition_list ] [ ORDER BY order_list] )
+```
+
+## Algunas funciones comunes
+
++ **FIRST_VALUE**: Para obtener el primer valor de un grupo.
++ **LAST_VALUE**: Para obtener el ultimo valor de un grupo.
++ **LAG**: Para obtener un valor de la fila anterior.
++ **LEAD**: ara obtener un valor de la fila siguiente.
++ **RANK**: Asigna un valor o un rank a cada fila segun la particion.
++ **ROW_NUMBER**: Obtiene el numero de fila, puede ser una numeracion general o reiniciar la numeracion por grupos o particiones.<br>
+[Mas info window functiosn MySQL](https://dev.mysql.com/doc/refman/8.0/en/window-functions-usage.html)
+
+[Mas info de windows functions](https://www.sqlservertutorial.net/sql-server-window-functions/sql-server-first_value-function/)
+
+Query con una funcion de agregacion la cual devuelve el total de ordenes para cada cliente, pero no es posible listar los datos de esa orden.
+```sql
+SELECT C.customerNumber, C.customerName, COUNT(O.orderNumber)
+FROM customers C
+INNER JOIN orders O ON C.customerNumber = O.customerNumber
+GROUP BY C.customerNumber, C.customerName;
+```
+
+Query con una window function la cual devuelve el total de ordenes para cada cliente, pero si es posible listar los datos de esa orden.
+```sql
+SELECT C.customerNumber, C.customerName, O.orderNumber, O.orderDate,
+COUNT(O.orderNumber) OVER(PARTITION BY C.customerNumber) AS total_profit
+FROM customers C
+INNER JOIN orders O ON C.customerNumber = O.customerNumber;
+```
+
+Query con una window function para acceder a valores en otras filas. 
+Adicional a los datos de la fila actual muestra la fecha de la primera orden que realizo el cliente.
+```sql
+SELECT C.customerNumber, C.customerName, O.orderNumber, O.orderDate,
+FIRST_VALUE(O.orderDate) OVER(PARTITION BY C.customerNumber) AS firstOrderDate
+FROM customers C
+INNER JOIN orders O ON C.customerNumber = O.customerNumber
+
+```
+:::
+
 :::
