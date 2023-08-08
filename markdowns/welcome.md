@@ -847,9 +847,9 @@ La función COUNT puede ser utilizada para contar duplicados.
 SELECT COUNT(firstName), COUNT(DISTINCT firstName)
 FROM employees;
 
-SELECT lastname, COUNT(firstName)
+SELECT firstName, COUNT(firstName)
 FROM employees
-GROUP BY lastname
+GROUP BY firstName
 HAVING count(firstName) > 1;
 ```
 
