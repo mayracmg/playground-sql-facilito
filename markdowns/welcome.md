@@ -850,7 +850,7 @@ FROM employees;
 SELECT firstName, COUNT(firstName)
 FROM employees
 GROUP BY firstName
-HAVING count(firstName) > 1;
+HAVING COUNT(firstName) > 1;
 ```
 
 ##  HAVING
@@ -858,10 +858,10 @@ A diferencia de la cláusula <span style="color:blue">WHERE</span>, la cláusula
 Se aplica a los resultados después de haberse agrupado (en la cláusula <span style="color:blue">GROUP BY</span>).
 Tiene la ventaja de permitir el uso de funciones establecidas tales como <span style="color:blue">AVG</span> o <span style="color:blue">SUM</span>, que no se pueden utilizar en la cláusula <span style="color:blue">WHERE</span> a menos que se coloquen dentro de una subconsulta.
 ```sql
-SELECT country, state, city, AVG(salesRepEmployeeNumber), MIN(creditLimit)
+SELECT country, state, city, AVG(creditLimit), MIN(creditLimit), MAX(creditLimit)
 FROM customers
 WHERE customerNumber BETWEEN 100 AND 500
-AND creditLimit > 0
+AND creditLimit > 100000
 GROUP BY country, state, city
 HAVING MIN(creditLimit) >= 100000;
 ```
