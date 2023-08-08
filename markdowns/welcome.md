@@ -902,15 +902,15 @@ FROM orders O
 INNER JOIN UK_Customers C ON C.customerNumber = O.customerNumber;
 
 WITH CTE AS (
-  SELECT CustomerNumber 
-  FROM customers
-  WHERE customerNumber BETWEEN 100 AND 500
-  AND (customerName LIKE 'A%'
-    OR customerName LIKE '_A%')
-  AND addressLine1 IS NOT NULL
-  AND addressLine2 IS NULL
-  AND creditLimit > 0
-  AND postalCode IN ('44000', '75012')
+	SELECT CustomerNumber
+	FROM customers
+	WHERE customerNumber BETWEEN 121 AND 471
+	AND (customerName LIKE 'A%'
+		OR customerName LIKE '_A%')
+	AND addressLine1 IS NOT NULL
+	AND addressLine2 IS NULL
+	AND creditLimit > 0
+	AND postalCode IN ('4110', '51247')
 )
 UPDATE customers
 INNER JOIN CTE C 
