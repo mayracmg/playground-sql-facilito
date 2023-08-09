@@ -1117,7 +1117,7 @@ INNER JOIN orders O ON C.customerNumber = O.customerNumber
 
 ::: Practica Sugerida
 Resolver los siguientes retos en HackerRank.com para practicar escribir queries.
-1. [Revising the Select Query I](https://www.hackerrank.com/challenges/revising-the-select-query/problem
+1. [Revising the Select Query I](https://www.hackerrank.com/challenges/revising-the-select-query/problem)
 2. [Revising the Select Query II](https://www.hackerrank.com/challenges/revising-the-select-query-2/problem)
 3. [Japanese Cities' Names](https://www.hackerrank.com/challenges/japanese-cities-name/problem)
 4. [Population Census](https://www.hackerrank.com/challenges/asian-population/problem)
