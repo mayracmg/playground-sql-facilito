@@ -1086,7 +1086,7 @@ Es posible usar las funciones de agregación con las window functions a fin de o
 + **ROW_NUMBER**: Obtiene el numero de fila, puede ser una numeracion general o reiniciar la numeracion por grupos o particiones.<br>
 [Mas info window functiosn MySQL](https://dev.mysql.com/doc/refman/8.0/en/window-functions-usage.html)
 
-[Mas info de windows functions](https://www.sqlservertutorial.net/sql-server-window-functions/sql-server-first_value-function/)
+[Mas info de windows functions](https://www.sqlservertutorial.net/sql-server-window-functions/)
 
 Query con una funcion de agregacion la cual devuelve el total de ordenes para cada cliente, pero no es posible listar los datos de esa orden.
 ```sql
