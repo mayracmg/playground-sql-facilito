@@ -922,6 +922,17 @@ FROM customers C
 INNER JOIN orders O ON C.customerNumber = O.customerNumber;
 ```
 
+Otra forma de escribirlo:
+```sql
+SELECT C.customerNumber, C.customerName, O.orderNumber, O.orderDate
+FROM customers C
+JOIN orders O ON C.customerNumber = O.customerNumber;
+
+SELECT C.customerNumber, C.customerName, O.orderNumber, O.orderDate
+FROM customers C, orders O
+WHERE C.customerNumber = O.customerNumber;
+```
+
 **A**: customers<br>
 **B**: offices
 ```sql
