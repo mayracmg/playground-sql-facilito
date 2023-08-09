@@ -898,42 +898,6 @@ FROM customers;
 ```
 :::
 
-::: Common Table Expressions
-Es un conjunto de resultados con nombre temporal al que puede hacer referencia dentro de una instrucción <span style="color:blue">SELECT</span>, <span style="color:blue">INSERT</span>, <span style="color:blue">UPDATE</span> o <span style="color:blue">DELETE</span>. El CTE también se la puede usar en una vista.
-
-**Sintaxis**:
-
-<span style="color:blue">WITH</span> + alias + <span style="color:blue">AS</span> + (QUERY CTE)
-Query que hace referencia al CTE
-
-```sql
-WITH UK_Customers AS (
-  SELECT customerNumber 
-  FROM customers
-  WHERE country = 'UK'
-)
-SELECT *
-FROM orders O
-INNER JOIN UK_Customers C ON C.customerNumber = O.customerNumber;
-
-WITH CTE AS (
-	SELECT CustomerNumber
-	FROM customers
-	WHERE customerNumber BETWEEN 121 AND 471
-	AND (customerName LIKE 'A%'
-		OR customerName LIKE '_A%')
-	AND addressLine1 IS NOT NULL
-	AND addressLine2 IS NULL
-	AND creditLimit > 0
-	AND postalCode IN ('4110', '51247')
-)
-UPDATE customers
-INNER JOIN CTE C 
-  ON C.CustomerNumber = customers.CustomerNumber
-SET customers.creditLimit = 17.19;
-```
-:::
-
 ::: Joins
 Un componente importante de cualquier base de datos relacional es la correlación que puede existir entre dos tablas cualesquiera. 
 En SQL podemos unir las tablas en una instrucción. Una operación join es una operación que hace coincidir las filas en una tabla con las filas de manera tal que las columnas de ambas tablas puedan ser colocadas lado a lado en los resultados de la consulta como si éstos vinieran de una sola tabla.
@@ -1042,6 +1006,42 @@ FROM customers C
 INNER JOIN orders O ON C.customerNumber = O.customerNumber
 INNER JOIN orderdetails D ON D.orderNumber = O.orderNumber
 INNER JOIN products P ON P.productCode = D.productCode;
+```
+:::
+
+::: Common Table Expressions
+Es un conjunto de resultados con nombre temporal al que puede hacer referencia dentro de una instrucción <span style="color:blue">SELECT</span>, <span style="color:blue">INSERT</span>, <span style="color:blue">UPDATE</span> o <span style="color:blue">DELETE</span>. El CTE también se la puede usar en una vista.
+
+**Sintaxis**:
+
+<span style="color:blue">WITH</span> + alias + <span style="color:blue">AS</span> + (QUERY CTE)
+Query que hace referencia al CTE
+
+```sql
+WITH UK_Customers AS (
+  SELECT customerNumber 
+  FROM customers
+  WHERE country = 'UK'
+)
+SELECT *
+FROM orders O
+INNER JOIN UK_Customers C ON C.customerNumber = O.customerNumber;
+
+WITH CTE AS (
+	SELECT CustomerNumber
+	FROM customers
+	WHERE customerNumber BETWEEN 121 AND 471
+	AND (customerName LIKE 'A%'
+		OR customerName LIKE '_A%')
+	AND addressLine1 IS NOT NULL
+	AND addressLine2 IS NULL
+	AND creditLimit > 0
+	AND postalCode IN ('4110', '51247')
+)
+UPDATE customers
+INNER JOIN CTE C 
+  ON C.CustomerNumber = customers.CustomerNumber
+SET customers.creditLimit = 17.19;
 ```
 :::
 
