@@ -1090,7 +1090,7 @@ Es posible usar las funciones de agregación con las window functions a fin de o
 
 Query con una funcion de agregacion la cual devuelve el total de ordenes para cada cliente, pero no es posible listar los datos de esa orden.
 ```sql
-SELECT C.customerNumber, C.customerName, COUNT(O.orderNumber)
+SELECT C.customerNumber, C.customerName, COUNT(O.orderNumber) total_orders
 FROM customers C
 INNER JOIN orders O ON C.customerNumber = O.customerNumber
 GROUP BY C.customerNumber, C.customerName;
@@ -1099,7 +1099,7 @@ GROUP BY C.customerNumber, C.customerName;
 Query con una window function la cual devuelve el total de ordenes para cada cliente, pero si es posible listar los datos de esa orden.
 ```sql
 SELECT C.customerNumber, C.customerName, O.orderNumber, O.orderDate,
-COUNT(O.orderNumber) OVER(PARTITION BY C.customerNumber) AS total_profit
+COUNT(O.orderNumber) OVER(PARTITION BY C.customerNumber) AS total_orders
 FROM customers C
 INNER JOIN orders O ON C.customerNumber = O.customerNumber;
 ```
