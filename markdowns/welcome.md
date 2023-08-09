@@ -1117,16 +1117,16 @@ INNER JOIN orders O ON C.customerNumber = O.customerNumber
 
 ::: Practica Sugerida
 Resolver los siguientes retos en HackerRank.com para practicar escribir queries.
-1. (Revising the Select Query I)[https://www.hackerrank.com/challenges/revising-the-select-query/problem]
-2. (Revising the Select Query II)[https://www.hackerrank.com/challenges/revising-the-select-query-2/problem]
-3. (Japanese Cities' Names)[https://www.hackerrank.com/challenges/japanese-cities-name/problem]
-4. (Population Census)[https://www.hackerrank.com/challenges/asian-population/problem]
-5. (African Cities)[https://www.hackerrank.com/challenges/african-cities/problem]
-6. (The Report)[https://www.hackerrank.com/challenges/the-report/problem]
-7. (Top Competitors)[https://www.hackerrank.com/challenges/full-score/problem]
-8. (Contest Leaderboard)[https://www.hackerrank.com/challenges/contest-leaderboard/problem]
-9. (Placements)[https://www.hackerrank.com/challenges/placements/problem]
-10. (New Companies)[https://www.hackerrank.com/challenges/the-company/problem]
+1. [Revising the Select Query I](https://www.hackerrank.com/challenges/revising-the-select-query/problem
+2. [Revising the Select Query II](https://www.hackerrank.com/challenges/revising-the-select-query-2/problem)
+3. [Japanese Cities' Names](https://www.hackerrank.com/challenges/japanese-cities-name/problem)
+4. [Population Census](https://www.hackerrank.com/challenges/asian-population/problem)
+5. [African Cities](https://www.hackerrank.com/challenges/african-cities/problem)
+6. [The Report](https://www.hackerrank.com/challenges/the-report/problem)
+7. [Top Competitors](https://www.hackerrank.com/challenges/full-score/problem)
+8. [Contest Leaderboard](https://www.hackerrank.com/challenges/contest-leaderboard/problem)
+9. [Placements](https://www.hackerrank.com/challenges/placements/problem)
+10. [New Companies](https://www.hackerrank.com/challenges/the-company/problem)
 :::
 
 :::
