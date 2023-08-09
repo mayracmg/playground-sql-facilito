@@ -922,6 +922,16 @@ FROM customers C
 INNER JOIN orders O ON C.customerNumber = O.customerNumber;
 ```
 
+**A**: customers<br>
+**B**: offices
+```sql
+SELECT C.customerNumber, C.customerName, O.officeCode, O.addressLine1
+FROM customers C
+INNER JOIN offices O ON C.country = O.country
+	AND O.state = C.state
+    AND O.city = C.city;
+```
+
 ### Ejemplo LEFT JOIN
 Leer todos los clientes, si los clientes tienen ordenes entonces aparecerán esos datos en el resultado, sino, apareceran como null.
 
