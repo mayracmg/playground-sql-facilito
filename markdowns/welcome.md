@@ -881,6 +881,21 @@ GROUP BY country, state, city
 HAVING MIN(creditLimit) >= 100000
 ORDER BY country, state DESC, city ASC, MIN(creditLimit);
 ```
+
+# Objetos JSON
+```sql
+SELECT JSON_OBJECT('Name', customerName, 'Country', country, 'City', city) Json
+FROM customers
+ORDER BY customerName;
+
+SELECT country, JSON_OBJECTAGG(customerName, city) Json
+FROM customers
+GROUP BY country
+ORDER BY country;
+
+SELECT JSON_ARRAYAGG(JSON_OBJECT('Name', customerName, 'Country', country, 'City', city)) Json
+FROM customers;
+```
 :::
 
 ::: Common Table Expressions
