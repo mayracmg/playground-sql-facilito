@@ -816,12 +816,12 @@ Comúnmente son utilizadas con la cláusula <span style="color:blue">GROUP BY</s
 
 Ejemplos
 
-1. Seleccionamos el total de registros en la tabla Usuario, para obtener otra métrica, solo cambiamos el COUNT por la función que necesitemos.
+1. Seleccionamos el total de registros en la tabla _customers_, para obtener otra métrica, solo cambiamos el COUNT por la función que necesitemos.
 ```sql
 SELECT COUNT(*)
 FROM customers;
 ```
-2. Seleccionamos el total de registros en la tabla Usuario, pero en lugar de un total general, es el total agrupado por el campo Activo.
+2. Seleccionamos el total de registros en la tabla _customers_, pero en lugar de un total general, es el total agrupado por el campo _country_.
 ```sql
 SELECT country, COUNT(*)
 FROM customers
